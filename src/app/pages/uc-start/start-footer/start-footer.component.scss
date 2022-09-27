@@ -1,0 +1,19 @@
+
+
+  mat-toolbar {
+  display: flex;
+  justify-content: space-around;
+  height: auto;
+  box-shadow:  0px -2px 4px rgba(20, 121, 0, 0.637);
+  padding-top: 1rem;
+  .contatti {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+  }
+}
+

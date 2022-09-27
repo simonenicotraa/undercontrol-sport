@@ -1,0 +1,18 @@
+<!-- =====================  NAVBAR  ======================
+        drawer.toggle permette di aprire la sidebar -->
+<mat-toolbar color="primary">
+  <mat-icon (click)="drawer.toggle()">menu</mat-icon><span >UnderControl - Sport</span>
+</mat-toolbar>
+
+<!-- =====================  SIDEBAR  ====================== -->
+<mat-drawer-container class="example-container" autosize>
+
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <p>Auto-resizing sidenav</p>
+  </mat-drawer>
+
+  <div class="example-sidenav-content" >
+
+  </div>
+
+</mat-drawer-container>
