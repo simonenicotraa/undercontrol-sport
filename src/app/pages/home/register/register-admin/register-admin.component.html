@@ -1,0 +1,56 @@
+<h2 mat-dialog-title>Save new Admin</h2>
+<form class="example-form" #f="ngForm" (ngSubmit)="save()">
+
+<mat-dialog-content class="mat-typography">
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput ngModel name="name" placeholder="Ex. Mario">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Surname</mat-label>
+      <input matInput ngModel name="surname" placeholder="Ex. Rossi">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" ngModel name="email" placeholder="Ex. m.r@example.com">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput ngModel name="username" placeholder="Ex. MarRossi">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput ngModel name="password" placeholder="Ex. abc123Sushi">
+    </mat-form-field>
+
+
+<!--    <mat-form-field appearance="fill">
+      <mat-label>Select an option</mat-label>
+       <mat-select ngModel [(value)]="selected" name="roles">
+        <mat-option name="roles" value="admin">Admin</mat-option>
+        <mat-option value="cliente">Cliente</mat-option>
+      </mat-select>
+    </mat-form-field>-->
+
+    <!--  <mat-form-field appearance="outline">
+    <mat-label>Choose a date</mat-label>
+    <input ngModel matInput [matDatepicker]="picker">
+    <mat-hint>DD/MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field> -->
+
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button type="submit" cdkFocusInitial>Save Admin</button>
+</mat-dialog-actions>
+
+</form>

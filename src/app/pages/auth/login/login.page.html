@@ -1,0 +1,34 @@
+<div>
+  <h1>Login</h1>
+  <!-- predispongo i campi di input al passggio dati -->
+  <form #f="ngForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your username</mat-label>
+      <input
+      name="userName" ngModel
+        matInput
+        placeholder="Mario"
+      /><!-- [formControl]="email" required-->
+      <!--       <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+ -->
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your password</mat-label>
+      <input name="password" ngModel class="inpo" matInput [type]="hide ? 'password' : 'text'" />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button type="submit" class="accedi" mat-stroked-button>
+      Accedi
+    </button>
+  </form>
+</div>

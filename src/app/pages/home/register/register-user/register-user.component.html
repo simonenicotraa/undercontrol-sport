@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>Save new User</h2>
+<form class="example-form" #f="ngForm" (ngSubmit)="save()">
+<mat-dialog-content class="mat-typography">
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput ngModel name="name" placeholder="Ex. Mario">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Surname</mat-label>
+      <input matInput ngModel name="surname" placeholder="Ex. Rossi">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" ngModel name="email" placeholder="Ex. m.r@example.com">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput ngModel name="username" placeholder="Ex. MarRossi">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput ngModel name="password" placeholder="Ex. abc123Sushi">
+    </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button type="submit" cdkFocusInitial>Save User</button>
+</mat-dialog-actions>
+</form>

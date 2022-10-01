@@ -1,0 +1,26 @@
+div {
+  width: 50%;
+  padding-top:1rem;
+  margin: 4rem auto;
+  text-align: center;
+  box-shadow: 5px 5px 5px black, -5px -5px 5px black;
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    mat-form-field {
+      width: 90%;
+      margin: 0 auto;
+
+    }
+    .accedi {
+      padding: 1rem;
+
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+
+}
+
