@@ -1,21 +1,26 @@
-<div>
+<div class="login">
+  <div class="back">
+    <button (click)="back()" mat-mini-fab color="primary">
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+  </div>
   <h1>Login</h1>
   <!-- predispongo i campi di input al passggio dati -->
   <form #f="ngForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="fill">
       <mat-label>Enter your username</mat-label>
-      <input
-      name="userName" ngModel
-        matInput
-        placeholder="Mario"
-      /><!-- [formControl]="email" required-->
-      <!--       <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
- -->
+      <input name="userName" ngModel matInput placeholder="Mario" />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Enter your password</mat-label>
-      <input name="password" ngModel class="inpo" matInput [type]="hide ? 'password' : 'text'" />
+      <input
+        name="password"
+        ngModel
+        class="inpo"
+        matInput
+        [type]="hide ? 'password' : 'text'"
+      />
       <button
         mat-icon-button
         matSuffix
@@ -27,8 +32,10 @@
       </button>
     </mat-form-field>
 
-    <button type="submit" class="accedi" mat-stroked-button>
-      Accedi
-    </button>
+
+    <mat-error *ngIf="error!=undefined">Incorrect Username or Password</mat-error>
+
+
+    <button type="submit" class="accedi" mat-stroked-button>Accedi</button>
   </form>
 </div>

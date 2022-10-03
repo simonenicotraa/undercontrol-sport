@@ -13,7 +13,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $undercontrol-sport-primary: mat.define-palette(mat.$green-palette, 500);
-$undercontrol-sport-accent: mat.define-palette(mat.$yellow-palette, A200, A100, A400);
+$undercontrol-sport-accent: mat.define-palette(mat.$deep-purple-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $undercontrol-sport-warn: mat.define-palette(mat.$red-palette);
@@ -35,7 +35,9 @@ $undercontrol-sport-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body {
+   height: 100%;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 a{
   text-decoration: none;

@@ -18,10 +18,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { RegisterUserComponent } from './register/register-user/register-user.component';
 import { RegisterAdminComponent } from './register/register-admin/register-admin.component';
 import { FormsModule } from '@angular/forms';
+import { UserinterfaceChildrenPage } from './userinterface-children/userinterface-children.page';
 
 
 @NgModule({
-  declarations: [HomeComponent, RegisterChildrenPage, RegisterUserComponent, RegisterAdminComponent],
+  declarations: [HomeComponent, RegisterChildrenPage, RegisterUserComponent, RegisterAdminComponent, UserinterfaceChildrenPage],
   imports: [
     CommonModule,
     HomeRoutingModule,

@@ -27,6 +27,7 @@
       <input type="password" matInput ngModel name="password" placeholder="Ex. abc123Sushi">
     </mat-form-field>
 
+    <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>

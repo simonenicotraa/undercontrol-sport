@@ -29,22 +29,7 @@
     </mat-form-field>
 
 
-<!--    <mat-form-field appearance="fill">
-      <mat-label>Select an option</mat-label>
-       <mat-select ngModel [(value)]="selected" name="roles">
-        <mat-option name="roles" value="admin">Admin</mat-option>
-        <mat-option value="cliente">Cliente</mat-option>
-      </mat-select>
-    </mat-form-field>-->
-
-    <!--  <mat-form-field appearance="outline">
-    <mat-label>Choose a date</mat-label>
-    <input ngModel matInput [matDatepicker]="picker">
-    <mat-hint>DD/MM/YYYY</mat-hint>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field> -->
-
+  <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
 
 
 </mat-dialog-content>

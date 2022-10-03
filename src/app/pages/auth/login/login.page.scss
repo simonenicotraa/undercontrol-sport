@@ -1,9 +1,17 @@
-div {
+
+.login {
+  background-color: white;
   width: 50%;
   padding-top:1rem;
   margin: 4rem auto;
   text-align: center;
-  box-shadow: 5px 5px 5px black, -5px -5px 5px black;
+  border:solid 2px rgb(20, 63, 1);
+  border-radius: 1rem;
+  .back{
+    padding-left: 1rem;
+    width: 100%;
+    text-align: left;
+  }
   form {
     display: flex;
     flex-direction: column;
@@ -21,6 +29,6 @@ div {
       }
     }
   }
-
 }
+
 

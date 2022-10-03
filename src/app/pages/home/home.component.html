@@ -9,12 +9,12 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <mat-nav-list>
-      <a mat-list-item href="#"><mat-icon>home</mat-icon></a>
+      <a mat-list-item href="#" routerLink="home"><mat-icon>home</mat-icon></a>
 
 
       <a mat-list-item href="#" routerLink="register">Register User & Admin</a>
 
-      <button mat-list mat-button color="warn" (click)="logout()">Logout</button>
+      <button class="logout" mat-list mat-button color="warn" (click)="logout()">Logout</button>
     </mat-nav-list>
   </mat-drawer>
 

@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
-    LoginPage,
+    LoginPage
   ],
   imports: [
     CommonModule,
@@ -18,8 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
-
+    MatButtonModule,
   ]
 })
 export class AuthModule { }
