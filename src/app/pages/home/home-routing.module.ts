@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AthletesChildrenPage } from './athletes-children/athletes-children.page';
+import { CoachesChildrenPage } from './coaches-children/coaches-children.page';
 import { HomeComponent } from './home.component';
 import { RegisterChildrenPage } from './register/register.children-page';
+import { TeamsChildrenPage } from './teams-children/teams-children.page';
 import { UserinterfaceChildrenPage } from './userinterface-children/userinterface-children.page';
 
 const routes: Routes = [
@@ -9,6 +12,9 @@ const routes: Routes = [
   children: [
     {path:'register',component:RegisterChildrenPage },
     {path:'ui', component: UserinterfaceChildrenPage    },
+    {path:'athletes', component: AthletesChildrenPage   },
+    {path:'coaches', component: CoachesChildrenPage    },
+    {path:'teams', component: TeamsChildrenPage   },
 
 
 

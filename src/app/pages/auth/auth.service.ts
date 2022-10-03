@@ -5,6 +5,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 import { IAuthData } from './interfaces/iauth-data';
 import { ISignupData } from './interfaces/isignup-data';
 import { environment } from 'src/environments/environment.prod';
+import { JwtHelperService } from "@auth0/angular-jwt";
 @Injectable({
   providedIn: 'root'
 })
@@ -12,28 +13,28 @@ export class AuthService {
 
   private loggedIn = false;
   authSubject = new BehaviorSubject<IAuthData | null>(null);
-/*helper = new JwtHelperService(); */
+  helper = new JwtHelperService();
 
   constructor(private http: HttpClient, private router: Router) {
-    /* this.restoreUserLogin(); */
+     this.restoreUserLogin();
   }
 
-  /* isAuthenticated(): boolean {
+   isAuthenticated(): boolean {
     return this.loggedIn;
-  } */
+  }
 
-  /* restoreUserLogin() {
+  restoreUserLogin() {
     const json = localStorage.getItem('isAuthenticated');
     if(json) {
       const user = JSON.parse(json);
-      if(this.helper.isTokenExpired(user.accessToken)) {
+      if(this.helper.isTokenExpired(user.token)) {
         localStorage.removeItem('isAuthenticated');
         return
       } else {
         this.authSubject.next(user);
       }
     }
-  } */
+  }
 
   login(obj: ISignupData) {
     this.loggedIn = true;

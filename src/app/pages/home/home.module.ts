@@ -19,10 +19,13 @@ import { RegisterUserComponent } from './register/register-user/register-user.co
 import { RegisterAdminComponent } from './register/register-admin/register-admin.component';
 import { FormsModule } from '@angular/forms';
 import { UserinterfaceChildrenPage } from './userinterface-children/userinterface-children.page';
+import { AthletesChildrenPage } from './athletes-children/athletes-children.page';
+import { CoachesChildrenPage } from './coaches-children/coaches-children.page';
+import { TeamsChildrenPage } from './teams-children/teams-children.page';
 
 
 @NgModule({
-  declarations: [HomeComponent, RegisterChildrenPage, RegisterUserComponent, RegisterAdminComponent, UserinterfaceChildrenPage],
+  declarations: [HomeComponent, RegisterChildrenPage, RegisterUserComponent, RegisterAdminComponent, UserinterfaceChildrenPage, AthletesChildrenPage, CoachesChildrenPage, TeamsChildrenPage],
   imports: [
     CommonModule,
     HomeRoutingModule,
