@@ -1,7 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/pages/auth/auth.service';
+import { AbstractServiceService } from '../../abstract-service.service';
+import { IUsers } from '../../interfaces/iusers';
 
 @Component({
   selector: 'app-register-user',
@@ -10,9 +13,42 @@ import { AuthService } from 'src/app/pages/auth/auth.service';
 })
 export class RegisterUserComponent implements OnInit {
   @ViewChild('f') form!: NgForm;
-  constructor(private authService: AuthService, private router: Router) { }
+  bool :boolean = false;
+
+
+  constructor(
+     private authService: AuthService,
+     private abstractService: AbstractServiceService,
+     private router: Router,
+     public dialogRef: MatDialogRef<RegisterUserComponent>,
+     /* prendo i dati passati  per riportarli nell'input scrivo [(ngModel)]="data.name" VEDI HTML*/
+     @Inject(MAT_DIALOG_DATA) public data: {
+                                              id:number,
+                                              name: string,
+                                              surname:string,
+                                              email: string,
+                                              password: string,
+                                              username: string,
+    }
+    ) { }
+
+
   error = undefined;
   ngOnInit(): void {
+    this.verificaDati()
+
+  }
+  verificaDati(){
+    if (this.data.id >= 0){
+        this.bool = true;
+    }else {
+      this.bool = false;
+    }
+  }
+
+
+  closeDialog(){
+    this.dialogRef.close();
   }
   save() {
     console.log(this.form.value)
@@ -20,7 +56,9 @@ export class RegisterUserComponent implements OnInit {
       (resp) => {
         console.log(resp);
         this.error = undefined;
-    /*     this.router.navigate(['/register']); */
+        this.closeDialog();
+        this.authService.reloadRoute()
+
       },
       (err) => {
         console.log(err.error);
@@ -29,4 +67,17 @@ export class RegisterUserComponent implements OnInit {
     );
   }
 
+  update(id: number){
+    this.abstractService.updateUser(id, this.form.value).subscribe(
+      (resp) => {
+        console.log(resp);
+        this.error = undefined;
+        this.closeDialog();
+        this.authService.reloadRoute()
+      }, (err)=> {
+        console.log(err.error);
+        this.error = err.error;
+      }
+    )
+  }
 }

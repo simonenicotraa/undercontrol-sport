@@ -60,4 +60,10 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
+  reloadRoute() {
+    const currentRoute = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentRoute]);
+    });
+  }
 }

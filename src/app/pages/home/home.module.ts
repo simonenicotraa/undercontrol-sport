@@ -13,19 +13,20 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import {MatTableModule} from '@angular/material/table';
 
 import { RegisterUserComponent } from './register/register-user/register-user.component';
 import { RegisterAdminComponent } from './register/register-admin/register-admin.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserinterfaceChildrenPage } from './userinterface-children/userinterface-children.page';
 import { AthletesChildrenPage } from './athletes-children/athletes-children.page';
 import { CoachesChildrenPage } from './coaches-children/coaches-children.page';
 import { TeamsChildrenPage } from './teams-children/teams-children.page';
+import { TableUsersComponent } from './register/table-users/table-users.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, RegisterChildrenPage, RegisterUserComponent, RegisterAdminComponent, UserinterfaceChildrenPage, AthletesChildrenPage, CoachesChildrenPage, TeamsChildrenPage],
+  declarations: [HomeComponent, RegisterChildrenPage, RegisterUserComponent, RegisterAdminComponent, UserinterfaceChildrenPage, AthletesChildrenPage, CoachesChildrenPage, TeamsChildrenPage, TableUsersComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -38,7 +39,9 @@ import { TeamsChildrenPage } from './teams-children/teams-children.page';
     MatListModule,
     MatExpansionModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatTableModule
   ],
 })
 export class HomeModule {}

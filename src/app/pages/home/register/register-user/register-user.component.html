@@ -1,36 +1,81 @@
-<h2 mat-dialog-title>Save new User</h2>
-<form class="example-form" #f="ngForm" (ngSubmit)="save()">
+<div *ngIf="bool==false">
+  <h2 mat-dialog-title>Save new User</h2>
+  <form class="example-form"  #f="ngForm"  (ngSubmit)="save()" >
+  <mat-dialog-content class="mat-typography">
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput  ngModel name="name" placeholder="Ex. Mario" >
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Surname</mat-label>
+        <input matInput  ngModel name="surname" placeholder="Ex. Rossi">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email"  ngModel name="email" placeholder="Ex. m.r@example.com" ><!-- formControlName="email -->
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput  ngModel name="username" placeholder="Ex. MarRossi">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput ngModel name="password" placeholder="Ex. abc123Sushi">
+      </mat-form-field>
+
+      <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button type="submit" cdkFocusInitial><mat-icon>person_add</mat-icon> Save User</button>
+  </mat-dialog-actions>
+  </form>
+  </div>
+
+
+
+<div *ngIf="bool == true">
+<h2 mat-dialog-title>Update User</h2>
+<form class="example-form"  #f="ngForm"  (ngSubmit)="update(data.id)" >
 <mat-dialog-content class="mat-typography">
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Name</mat-label>
-      <input matInput ngModel name="name" placeholder="Ex. Mario">
+      <input matInput  [(ngModel)]="data.name" name="name" placeholder="Ex. Mario" >
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Surname</mat-label>
-      <input matInput ngModel name="surname" placeholder="Ex. Rossi">
+      <input matInput  [(ngModel)]="data.surname" name="surname" placeholder="Ex. Rossi">
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Email</mat-label>
-      <input matInput type="email" ngModel name="email" placeholder="Ex. m.r@example.com">
+      <input matInput type="email"  [(ngModel)]="data.email" name="email" placeholder="Ex. m.r@example.com" ><!-- formControlName="email -->
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Username</mat-label>
-      <input matInput ngModel name="username" placeholder="Ex. MarRossi">
+      <input matInput  [(ngModel)]="data.username" name="username" placeholder="Ex. MarRossi">
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Password</mat-label>
-      <input type="password" matInput ngModel name="password" placeholder="Ex. abc123Sushi">
+      <input type="password" matInput [(ngModel)]="data.password" name="password" placeholder="Ex. abc123Sushi">
     </mat-form-field>
-
+    <p>id: {{data.id}}</p>
     <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button type="submit" cdkFocusInitial><mat-icon>person_add</mat-icon> Save User</button>
+  <button mat-button type="submit" cdkFocusInitial><mat-icon>edit</mat-icon> Modifica</button>
 </mat-dialog-actions>
 </form>
+</div>
+
+
