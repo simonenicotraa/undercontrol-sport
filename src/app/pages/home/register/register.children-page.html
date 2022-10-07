@@ -1,4 +1,5 @@
-<mat-expansion-panel>
+<!-- pannello per aggiunta di admin -->
+<mat-expansion-panel *ngIf="user.roles=='ROLE_ADMIN'">
   <mat-expansion-panel-header>
     <mat-panel-title>
       Admin
@@ -7,9 +8,10 @@
       <button mat-button (click)="openDialogAdmin()"><mat-icon>person_add</mat-icon>Registra un nuovo Admin</button>      <mat-icon>new</mat-icon>
     </mat-panel-description>
   </mat-expansion-panel-header>
-  aaaaa
+  aaaaa {{user.roles[0].id}}
 </mat-expansion-panel>
 
+ <!-- pannello per aggiunta di user -->
 <mat-expansion-panel><mat-expansion-panel-header>
     <mat-panel-title>
       User

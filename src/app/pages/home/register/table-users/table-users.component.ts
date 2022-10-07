@@ -5,9 +5,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { AbstractServiceService } from '../../abstract-service.service';
@@ -15,7 +13,6 @@ import { RegisterUserComponent } from '../register-user/register-user.component'
 import { RegisterAdminComponent } from '../register-admin/register-admin.component';
 import { IAuthData } from 'src/app/pages/auth/interfaces/iauth-data';
 import { IUsers } from '../../interfaces/iusers';
-import { JsonPipe } from '@angular/common';
 import { AuthService } from 'src/app/pages/auth/auth.service';
 @Component({
   selector: 'app-table-users',
@@ -34,28 +31,33 @@ import { AuthService } from 'src/app/pages/auth/auth.service';
 })
 export class TableUsersComponent implements OnInit {
   users: IAuthData[] = [];
+  /* oggetto utilizzato per iterare array user e stampare in tabella */
   dataSource = new MatTableDataSource(this.users);
   utenti:IUsers[] = []
 
-
+  /* proprieta per ottenere dati da localstorage [getUtLoggato()] */
+  json:any;
+  userLog:any;
 
   constructor(
     private service: AbstractServiceService,
-    private http: HttpClient,
     public dialog: MatDialog,
     private authService: AuthService
   ) {}
 
-  displayedColumns: string[] = ['username', 'email', 'role', 'option'];
-  /* prova*/
   columnsToDisplay: string[] = ['username', 'email', 'role'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: any | null;
 
   ngOnInit(): void {
     this.getAllUsers();
+    this.getUtLoggato()
   }
-
+  getUtLoggato() {
+    this.json=(localStorage.getItem('isAuthenticated'));
+    this.userLog = JSON.parse(this.json)
+    console.log(this.userLog.roles[0])
+  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -89,16 +91,6 @@ export class TableUsersComponent implements OnInit {
     this.authService.reloadRoute()
   }
 
-  getById(id: number): any {
-    this.service.findUserById(id).subscribe(
-      (resp) => {
-        console.log(resp);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
 
 /* Metodo che mi consente di riportare dati di un utente selezionato nello stesso form di registrazione utente.
 uso il filter di un array perchè il getById da come oggetto undefined

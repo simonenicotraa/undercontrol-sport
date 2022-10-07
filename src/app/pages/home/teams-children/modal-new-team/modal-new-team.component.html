@@ -1,0 +1,18 @@
+<form class="example-form"  #f="ngForm"  (ngSubmit)="save()" >
+  <mat-form-field appearance="fill">
+    <mat-label>Name of team</mat-label>
+    <input matInput ngModel name="name" placeholder="es. U15 ">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Select</mat-label>
+    <mat-select ngModel [(value)]="selected" name="gender">
+      <mat-option  value="M">Male</mat-option>
+      <mat-option  value="F">Female</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Season</mat-label>
+    <input matInput ngModel name="season" placeholder="es. 22/23">
+  </mat-form-field>
+  <button mat-button type="submit" cdkFocusInitial> Save Team</button>
+  </form>

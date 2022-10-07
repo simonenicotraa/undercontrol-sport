@@ -1,4 +1,4 @@
-export interface Iatletes {
+export interface IAthlCoach {
   "id"?: number;
   "name": string;
   "surname": string;

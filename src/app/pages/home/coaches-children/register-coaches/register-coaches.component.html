@@ -1,0 +1,116 @@
+<div *ngIf="bool==false">
+  <h2 mat-dialog-title>Save new Coach</h2>
+  <form class="example-form"  #f="ngForm"  (ngSubmit)="save()" >
+  <mat-dialog-content class="mat-typography">
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput  ngModel name="name" placeholder="Ex. Mario" >
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Surname</mat-label>
+        <input matInput  ngModel name="surname" placeholder="Ex. Rossi">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput name="dateOfBirth" ngModel [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email"  ngModel name="email" placeholder="Ex. m.r@example.com" >
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Telephone Number</mat-label>
+        <input matInput ngModel name="ntel" placeholder="333-4444555">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Fiscal Code</mat-label>
+        <input matInput ngModel name="fiscalCode" placeholder="Ex. GTRQUE66D11V333V">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Address</mat-label>
+        <input matInput ngModel name="address" placeholder="Ex. via dei lupi, 11">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>CAP</mat-label>
+        <input matInput ngModel name="cap" placeholder="Ex. 12345">
+      </mat-form-field>
+
+    <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button type="submit" cdkFocusInitial><mat-icon>person_add</mat-icon> Save Athlete</button>
+  </mat-dialog-actions>
+  </form>
+  </div>
+
+
+
+
+  <div *ngIf="bool==true">
+    <h2 mat-dialog-title>Update User</h2>
+    <form class="example-form"  #f="ngForm"  (ngSubmit)="update(data.id)" >
+    <mat-dialog-content class="mat-typography">
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput  [(ngModel)]="data.name" name="name" placeholder="Ex. Mario" >
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Surname</mat-label>
+        <input matInput  [(ngModel)]="data.surname" name="surname" placeholder="Ex. Rossi">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput name="dateOfBirth"  [(ngModel)]="data.dateOfBirth" [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email"  [(ngModel)]="data.email" name="email" placeholder="Ex. m.r@example.com" >
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Telephone Number</mat-label>
+        <input matInput [(ngModel)]="data.ntel" name="ntel" placeholder="333-4444555">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Fiscal Code</mat-label>
+        <input matInput [(ngModel)]="data.fiscalCode" name="fiscalCode" placeholder="Ex. GTRQUE66D11V333V">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Address</mat-label>
+        <input matInput [(ngModel)]="data.address" name="address" placeholder="Ex. via dei lupi, 11">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>CAP</mat-label>
+        <input matInput [(ngModel)]="data.cap" name="cap" placeholder="Ex. 12345">
+      </mat-form-field>
+        <p>id: {{data.id}}</p>
+        <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button type="submit" cdkFocusInitial><mat-icon>edit</mat-icon> Modifica</button>
+    </mat-dialog-actions>
+    </form>
+    </div>

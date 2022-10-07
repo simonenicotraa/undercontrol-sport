@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { RegisterAthletesComponent } from './register-athletes/register-athletes.component';
 
 @Component({
   templateUrl: './athletes-children.page.html',
@@ -6,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AthletesChildrenPage implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
-
+  openDialog() {
+    this.dialog.open(RegisterAthletesComponent);
+  }
 }

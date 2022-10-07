@@ -10,13 +10,19 @@ import { JwtHelperService } from "@auth0/angular-jwt";
   providedIn: 'root'
 })
 export class AuthService {
-
   private loggedIn = false;
   authSubject = new BehaviorSubject<IAuthData | null>(null);
   helper = new JwtHelperService();
 
+
+  /* per mandare headers al back-end e poter far funzionare i preauthorize */
+  headers: { Authorization?: string;
+    "Content-Type":string } = { "Content-Type":"application/json" };
+options= {headers:this.headers}
+
   constructor(private http: HttpClient, private router: Router) {
-     this.restoreUserLogin();
+
+    this.restoreUserLogin();
   }
 
    isAuthenticated(): boolean {
@@ -46,12 +52,6 @@ export class AuthService {
     )
   }
 
-  signupAdmin(obj: ISignupData) {
-    return this.http.post(environment.APIEndpoint+'/users/insertAdmin', obj);
-  }
-  signupUser(obj: ISignupData) {
-    return this.http.post(environment.APIEndpoint+'/users/insertUser', obj);
-  }
   logout() {
     this.loggedIn = false;
     console.log('Logout')

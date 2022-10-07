@@ -38,21 +38,28 @@ export class RegisterUserComponent implements OnInit {
     this.verificaDati()
 
   }
+/*   verificaDati(){
+    if (this.data.id){
+        this.bool = true;
+    }else {
+      this.bool = false;
+    }
+  } */
   verificaDati(){
-    if (this.data.id >= 0){
+/* controllo se this.data è nullo && con hasOwnproperty controllo se data.id esiste */
+    if (this.data && this.data.hasOwnProperty("id") ){    /* ("id" in this.data) */
         this.bool = true;
     }else {
       this.bool = false;
     }
   }
 
-
   closeDialog(){
     this.dialogRef.close();
   }
   save() {
     console.log(this.form.value)
-        this.authService.signupUser(this.form.value).subscribe(
+        this.abstractService.signupUser(this.form.value).subscribe(
       (resp) => {
         console.log(resp);
         this.error = undefined;

@@ -1,0 +1,21 @@
+.butto{
+  text-align:center ;
+  button{
+
+  padding: 0.5rem;
+  margin: 1rem auto;
+  font-size: large;
+  }
+}
+.containerCards{
+
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: center;
+
+.card{
+  width: 200px;
+  margin-bottom: 10px;
+}
+}
