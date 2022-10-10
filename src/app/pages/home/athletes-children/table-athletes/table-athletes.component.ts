@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/pages/auth/auth.service';
 import { AbstractServiceService } from '../../abstract-service.service';
 import { IAthlCoach } from '../../interfaces/iathl-coach';
 import { Iatletes } from '../../interfaces/iatletes';
+import { ModalAddCertificateComponent } from '../modal-add-certificate/modal-add-certificate.component';
 import { RegisterAthletesComponent } from '../register-athletes/register-athletes.component';
 
 @Component({
@@ -31,7 +32,7 @@ import { RegisterAthletesComponent } from '../register-athletes/register-athlete
 })
 export class TableAthletesComponent implements OnInit {
 
-  athletes: IAthlCoach[] = [];
+  athletes: Iatletes[] = [];
   dataSource = new MatTableDataSource(this.athletes);
 
   constructor(
@@ -106,4 +107,17 @@ applyFilter(event: Event) {
     });
   }
 
+  /* apertura modal per aggiungere certificati */
+  openDialogCertificate(id:number){
+    let obj = this.athletes.filter((user) => user.id === id);
+    let u =obj[0];
+    let dialogRef = this.dialog.open(ModalAddCertificateComponent, {
+      data: {
+        id: u.id
+            },
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        console.log(`Dialog result: ${result}`);
+      });
+  }
 }

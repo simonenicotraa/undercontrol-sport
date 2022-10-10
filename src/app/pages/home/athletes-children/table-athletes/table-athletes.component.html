@@ -52,11 +52,16 @@
             <p> Telephone Number: <a href="tel:{{element.ntel}}"></a>{{element.ntel}} </p>
             <p> Fiscal Code: {{element.fiscalCode}} </p>
             <p> Address: {{element.address}}, {{element.cap}}</p>
+            <p *ngIf="element.listCertificates[0]!=undefined">
+               Medical Certificate: productionDate: {{element.listCertificates[0].productionDate}}
+                                    expirationDate:{{element.listCertificates[0].expirationDate}}
+            </p>
 
           </div>
           <div>
             <button mat-mini-fab color="warn" (click)="deleteAthlete(element.id)"><mat-icon>delete</mat-icon></button>
             <button mat-mini-fab color="warn" (click)="openDialog(element.id)" ><mat-icon>edit</mat-icon></button>
+            <button  color="warn" (click)="openDialogCertificate(element.id)" >Add Certificate</button>
           </div>
 
         </div>

@@ -34,10 +34,11 @@ import { TableCoachesComponent } from './coaches-children/table-coaches/table-co
 import { ModalAddAthletesComponent } from './teams-children/modal-add-athletes/modal-add-athletes.component';
 import { ModalAddCoachesComponent } from './teams-children/modal-add-coaches/modal-add-coaches.component';
 import { ModalNewTeamComponent } from './teams-children/modal-new-team/modal-new-team.component';
+import { ModalAddCertificateComponent } from './athletes-children/modal-add-certificate/modal-add-certificate.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, RegisterChildrenPage, RegisterUserComponent, RegisterAdminComponent, UserinterfaceChildrenPage, AthletesChildrenPage, CoachesChildrenPage, TeamsChildrenPage, TableUsersComponent, RegisterAthletesComponent, RegisterCoachesComponent, TableAthletesComponent, TableCoachesComponent, ModalAddAthletesComponent, ModalAddCoachesComponent, ModalNewTeamComponent],
+  declarations: [HomeComponent, RegisterChildrenPage, RegisterUserComponent, RegisterAdminComponent, UserinterfaceChildrenPage, AthletesChildrenPage, CoachesChildrenPage, TeamsChildrenPage, TableUsersComponent, RegisterAthletesComponent, RegisterCoachesComponent, TableAthletesComponent, TableCoachesComponent, ModalAddAthletesComponent, ModalAddCoachesComponent, ModalNewTeamComponent, ModalAddCertificateComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

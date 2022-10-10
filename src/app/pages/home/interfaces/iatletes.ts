@@ -1,3 +1,5 @@
+import { Imedicalcertificates } from "./imedicalcertificates";
+
 export interface Iatletes {
   "id"?: number;
   "name": string;
@@ -8,4 +10,5 @@ export interface Iatletes {
   "fiscalCode": string;
   "address": string;
   "cap": string;
+  "listCertificates"?:Imedicalcertificates[]
 }

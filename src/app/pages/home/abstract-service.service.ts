@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment.prod';
 import { IAuthData } from '../auth/interfaces/iauth-data';
 import { ISignupData } from '../auth/interfaces/isignup-data';
 import { IAthlCoach } from './interfaces/iathl-coach';
+import { Imedicalcertificates } from './interfaces/imedicalcertificates';
 import { Iteams } from './interfaces/iteams';
 
 @Injectable({
@@ -133,8 +134,10 @@ patchListAthletes(id: number, obj:Iteams){
 patchListCoaches(idTeam: number, idCoach:number){
   return this.http.patch(environment.APIEndpoint+'/team/updateListCoach/'+idTeam+'/'+idCoach, this.options)
 }
-
-
+/* ==================================== MEDICAL CERTIFICATES ==================================== */
+insertMedicalCertificates(obj: Imedicalcertificates,id:number){
+  return this.http.post(environment.APIEndpoint + '/certificates/insertMedicalCertificate'+id,obj,this.options)
+}
 
   /* ==================================== IMMAGINI ==================================== */
 /* insertImageDb(obj:string){
