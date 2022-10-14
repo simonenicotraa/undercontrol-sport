@@ -13,6 +13,8 @@ export class RegisterCoachesComponent implements OnInit {
   @ViewChild('f') form!: NgForm;
   error=undefined
   bool :boolean = false;
+  society:String | null =this.authService.getSociety()
+
   constructor(
     private abstractService: AbstractServiceService,
     private authService: AuthService,

@@ -3,6 +3,7 @@
     <mat-label>Name of team</mat-label>
     <input matInput ngModel name="name" placeholder="es. U15 ">
   </mat-form-field>
+
   <mat-form-field appearance="fill">
     <mat-label>Select</mat-label>
     <mat-select ngModel [(value)]="selected" name="gender">
@@ -10,9 +11,16 @@
       <mat-option  value="F">Female</mat-option>
     </mat-select>
   </mat-form-field>
+
   <mat-form-field appearance="fill">
     <mat-label>Season</mat-label>
     <input matInput ngModel name="season" placeholder="es. 22/23">
   </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Society</mat-label>
+    <input matInput [(ngModel)]="society" readonly="readonly" name="society" placeholder="Ex. 12345">
+  </mat-form-field>
+
   <button mat-button type="submit" cdkFocusInitial> Save Team</button>
   </form>

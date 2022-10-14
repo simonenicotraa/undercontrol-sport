@@ -1,6 +1,6 @@
 export interface Imedicalcertificates {
   id?:number,
-  productionData:Date,
+  productionDate:Date,
   expirationDate?:Date
 
 

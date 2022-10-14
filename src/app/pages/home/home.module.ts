@@ -35,10 +35,13 @@ import { ModalAddAthletesComponent } from './teams-children/modal-add-athletes/m
 import { ModalAddCoachesComponent } from './teams-children/modal-add-coaches/modal-add-coaches.component';
 import { ModalNewTeamComponent } from './teams-children/modal-new-team/modal-new-team.component';
 import { ModalAddCertificateComponent } from './athletes-children/modal-add-certificate/modal-add-certificate.component';
-
+import { ModalAddPaymentComponent } from './athletes-children/modal-add-payment/modal-add-payment.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { ModalViewAllPaymentComponent } from './athletes-children/modal-view-all-payment/modal-view-all-payment.component';
+import { ModalViewAllCertificateComponent } from './athletes-children/modal-view-all-certificate/modal-view-all-certificate.component';
 
 @NgModule({
-  declarations: [HomeComponent, RegisterChildrenPage, RegisterUserComponent, RegisterAdminComponent, UserinterfaceChildrenPage, AthletesChildrenPage, CoachesChildrenPage, TeamsChildrenPage, TableUsersComponent, RegisterAthletesComponent, RegisterCoachesComponent, TableAthletesComponent, TableCoachesComponent, ModalAddAthletesComponent, ModalAddCoachesComponent, ModalNewTeamComponent, ModalAddCertificateComponent],
+  declarations: [HomeComponent, RegisterChildrenPage, RegisterUserComponent, RegisterAdminComponent, UserinterfaceChildrenPage, AthletesChildrenPage, CoachesChildrenPage, TeamsChildrenPage, TableUsersComponent, RegisterAthletesComponent, RegisterCoachesComponent, TableAthletesComponent, TableCoachesComponent, ModalAddAthletesComponent, ModalAddCoachesComponent, ModalNewTeamComponent, ModalAddCertificateComponent, ModalAddPaymentComponent, ModalViewAllPaymentComponent, ModalViewAllCertificateComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -57,7 +60,9 @@ import { ModalAddCertificateComponent } from './athletes-children/modal-add-cert
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule,
+    MatMenuModule
+
   ],
 })
 export class HomeModule {}

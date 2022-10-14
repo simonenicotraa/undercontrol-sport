@@ -11,12 +11,14 @@ import { AbstractServiceService } from '../../abstract-service.service';
 })
 export class ModalNewTeamComponent implements OnInit {
   @ViewChild('f') form!: NgForm;
+  society:String | null =this.authService.getSociety()
   /* variabili per settaggio campo input options */
   selected = 'option1';
   selected2 = '';
   error= undefined;
   constructor(
               public dialogRef: MatDialogRef<ModalNewTeamComponent>,
+              private authService: AuthService,
               private abstractService:AbstractServiceService,
               private service2: AuthService,
             ) { }

@@ -4,7 +4,9 @@ import { environment } from 'src/environments/environment.prod';
 import { IAuthData } from '../auth/interfaces/iauth-data';
 import { ISignupData } from '../auth/interfaces/isignup-data';
 import { IAthlCoach } from './interfaces/iathl-coach';
+import { Iatletes } from './interfaces/iatletes';
 import { Imedicalcertificates } from './interfaces/imedicalcertificates';
+import { Ipayment } from './interfaces/ipayment';
 import { Iteams } from './interfaces/iteams';
 
 @Injectable({
@@ -16,14 +18,7 @@ export class AbstractServiceService {
   headers: { Authorization?: string;
               "Content-Type":string } = { "Content-Type":"application/json" };
 
-
-
   options= {headers:this.headers}
-
-  /* prova
-    headers2: { Authorization?: string;
-                "Content-Type":any } = { "Content-Type": "multipart/form-data" }; */
- /*  options2= {headers:this.headers2} */
 
  constructor(private http: HttpClient) {
     let tokenJson= localStorage.getItem('isAuthenticated');
@@ -32,9 +27,6 @@ export class AbstractServiceService {
 /*token.token = let token inizializzato .token si riferisce alla proprietà specificata nell'interfaccia IAuthData   */
       this.headers.Authorization= `Bearer ${token.token}`
       this.options= {headers:this.headers }
-
-      /* prova */
-     /*  this.options2= {headers:this.headers2 } */
     }
   }
 
@@ -68,12 +60,12 @@ export class AbstractServiceService {
   /* ==================================== ATLETI ==================================== */
   /* GET -- ottenere tutti gli atleti */
   findAllAthletes() {
-    return this.http.get<[]>(environment.APIEndpoint + '/athlete/findAllAthletes',this.options);
+    return this.http.get<Iatletes[]>(environment.APIEndpoint + '/athlete/findAllAthletes',this.options);
   }
 
   /* GET -- ottenere atleta per id */
   findAthleteById(id: number) {
-    return this.http.get(environment.APIEndpoint + '/athlete/' + id,this.options);
+    return this.http.get<Iatletes>(environment.APIEndpoint + '/athlete/' + id,this.options);
   }
   /*DELETE -- cancellare atleti nel db */
   deleteAthletes(id: number) {
@@ -134,11 +126,41 @@ patchListAthletes(id: number, obj:Iteams){
 patchListCoaches(idTeam: number, idCoach:number){
   return this.http.patch(environment.APIEndpoint+'/team/updateListCoach/'+idTeam+'/'+idCoach, this.options)
 }
+
+
 /* ==================================== MEDICAL CERTIFICATES ==================================== */
 insertMedicalCertificates(obj: Imedicalcertificates,id:number){
   return this.http.post(environment.APIEndpoint + '/certificates/insertMedicalCertificate'+id,obj,this.options)
 }
+deleteMedicalCertificates(id: number|undefined, idAthl:number|undefined){
+  return this.http.delete(environment.APIEndpoint + '/certificates/' + id+'/'+idAthl,this.options);
+}
+getAllMedicalCertificates(){
+  return this.http.get<[]>(environment.APIEndpoint +'/certificates/findAllMedicalCertificate',this.options)
+}
+updateMedicalCertificate(id:number, dto:Imedicalcertificates){
+  return this.http.put(environment.APIEndpoint +'/certificates/'+id, dto, this.options)
+}
 
+
+  /* ==================================== PAGAMENTI ==================================== */
+insertPayment(obj:Ipayment,id:number){
+  return this.http.post(environment.APIEndpoint + '/payment/insertPayment'+id,obj,this.options)
+}
+
+updatePayment(id:number, dto:Ipayment){
+  return this.http.put(environment.APIEndpoint +'/payment/update/'+id, dto, this.options)
+}
+getPaymentById(id:number){
+  return this.http.get<Ipayment>(environment.APIEndpoint +'/payment/' + id,this.options)
+}
+
+getAllPayment(){
+  return this.http.get<[]>(environment.APIEndpoint +'/payment/findAllPayments',this.options)
+}
+deletePayment(id: number|undefined, idAthl:number|undefined){
+  return this.http.delete(environment.APIEndpoint + '/payment/' + id+'/'+idAthl,this.options);
+}
   /* ==================================== IMMAGINI ==================================== */
 /* insertImageDb(obj:string){
   return this.http.post(environment.APIEndpoint + '/image',obj , this.options2);

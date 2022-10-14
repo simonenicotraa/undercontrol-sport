@@ -1,8 +1,10 @@
 div{
   text-align: center;
   button{
-   width: 30%;
+   width: 200px;
    margin-top: 2rem;
+   height: auto;
+    box-sizing: content-box;
    padding: 0.8rem;
    border-radius: 10px;
    font-size: 1.5rem;

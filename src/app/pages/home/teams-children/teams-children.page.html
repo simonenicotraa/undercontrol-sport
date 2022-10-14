@@ -1,39 +1,6 @@
 <div class="butto">
-  <button mat-raised-button color="primary" (click)="openDialogNewTeam()">Create New Team</button>
+  <button mat-raised-button color="accent" (click)="openDialogNewTeam()">Create New Team</button>
 </div>
-<!--
-<mat-card class="example-card" *ngFor="let team of teams">
-  <mat-card-title>{{team.name}} {{team.season}} {{team.gender}}</mat-card-title>
-  <mat-card-content>
-    <h3>Coach</h3>
-    <ul>
-      <li *ngFor="let item of team.coaches"> {{team.coaches[0].name}} {{team.coaches[0].surname}}</li>
-    </ul>
-
-    <h3>Players</h3>
-    <ul>
-      <li *ngFor="let item of team.athletes"> {{team.athletes[0].name}} {{team.athletes[0].surname}}</li>
-    </ul>
-
-     </mat-card-content>
-
-     <mat-card-actions align="start">
-      <button mat-raised-button (click)="openDialogAthlete(team.id)">Add Athletes</button>
-      <button mat-raised-button (click)="openDialogCoach(team.id)">Add Coaches</button>
-
-  </mat-card-actions>
-</mat-card> -->
-<!-- <mat-expansion-panel (opened)="panelOpenState = true"
-(closed)="panelOpenState = false">
-<mat-expansion-panel-header>
-<mat-panel-title>
-Self aware panel
-</mat-panel-title>
-
-</mat-expansion-panel-header>
-<p>I'm visible because I am open</p>
-</mat-expansion-panel>
-</mat-accordion> -->
 
 <div class="containerCards">
   <div class="card" *ngFor="let team of teams">
@@ -62,10 +29,9 @@ Self aware panel
      </mat-card-content>
 
      <mat-card-actions align="start">
-      <button mat-raised-button (click)="openDialogAthlete(team.id)">Add Athletes</button>
-      <button mat-raised-button (click)="openDialogCoach(team.id)">Add Coaches</button>
-
-  </mat-card-actions>
+      <button  (click)="openDialogAthlete(team.id)">Add Athletes</button>
+      <button  (click)="openDialogCoach(team.id)">Add Coaches</button>
+    </mat-card-actions>
 </mat-expansion-panel>
 </mat-accordion>
 </mat-card>

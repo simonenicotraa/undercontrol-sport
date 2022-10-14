@@ -1,0 +1,21 @@
+<div  mat-dialog-content>
+
+  <mat-list>
+    <div *ngFor="let item of data.list">
+      <mat-list-item>
+        <div>
+        <p>PRODUCTION DATE --> {{item.productionDate}} </p>
+        <p>EXPIRATION DATE --> {{item.expirationDate}}</p>
+
+        </div>
+        <div>
+          <button (click)="deleteCertificate(item.id)"><mat-icon>delete</mat-icon></button>
+        </div>
+      </mat-list-item>
+    <mat-divider></mat-divider>
+    </div>
+
+  </mat-list>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+  </div>

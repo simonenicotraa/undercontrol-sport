@@ -5,4 +5,5 @@ name: string,
 password: string,
 surname: string,
 username: string,
+society: string
 }

@@ -1,11 +1,29 @@
 div{
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
   table, mat-form-field{
     width:100%;
     margin: 0 auto;
   }
 }
+  @media only screen and (max-width: 601px) {
+    div{
+      width: 95%;
+      margin: 0 auto;
+      table, mat-form-field{
+        width:100%;
+        margin: 0 auto;
+      }
+    }
+    .example-element-diagram {
+      display: flex;
+      flex-direction: row;
+      height: auto;
+      width: 100%;
+      margin:0;
+    }
+  }
+
 tr.example-detail-row {
   height: 0;
 }
@@ -25,10 +43,13 @@ tr.example-element-row:not(.example-expanded-row):active {
 .example-element-detail {
   overflow: hidden;
   display: flex;
+  width: 100%;
 }
 
 .example-element-diagram {
   display: flex;
   flex-direction: row;
   height: auto;
+  width: 90%;
+  margin: 0 auto;
 }

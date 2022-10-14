@@ -14,22 +14,24 @@ export class RegisterAthletesComponent implements OnInit {
   error=undefined
   bool :boolean = false;
 
+  society:String | null =this.authService.getSociety()
+
 
   constructor(
-    private abstractService: AbstractServiceService,
-    private authService: AuthService,
-    public dialogRef: MatDialogRef<RegisterAthletesComponent>,
-     /* prendo i dati passati  per riportarli nell'input scrivo [(ngModel)]="data.name" VEDI HTML*/
-     @Inject(MAT_DIALOG_DATA) public data: {
-                                                  id:number,
-                                                  name: string,
-                                                  surname:string,
-                                                  dateOfBirth:string,
-                                                  email: string,
-                                                  ntel:string,
-                                                  fiscalCode: string,
-                                                  address: string,
-                                                  cap: string,}
+              private abstractService: AbstractServiceService,
+              private authService: AuthService,
+              public dialogRef: MatDialogRef<RegisterAthletesComponent>,
+              /* prendo i dati passati  per riportarli nell'input scrivo [(ngModel)]="data.name" VEDI HTML*/
+              @Inject(MAT_DIALOG_DATA) public data: {
+                                                            id:number,
+                                                            name: string,
+                                                            surname:string,
+                                                            dateOfBirth:string,
+                                                            email: string,
+                                                            ntel:string,
+                                                            fiscalCode: string,
+                                                            address: string,
+                                                            cap: string,}
     ) { }
 
 

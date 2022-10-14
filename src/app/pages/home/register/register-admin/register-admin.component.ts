@@ -14,6 +14,7 @@ export class RegisterAdminComponent implements OnInit {
   @ViewChild('f') form!: NgForm;
   bool :boolean = false;
   error = undefined;
+
   constructor(
    private authService: AuthService,
     private abstractService: AbstractServiceService,
@@ -27,6 +28,7 @@ export class RegisterAdminComponent implements OnInit {
                                               email: string,
                                               password: string,
                                               username: string,
+                                              society:string
                                             }
      ) {}
 

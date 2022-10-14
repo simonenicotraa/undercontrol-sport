@@ -1,0 +1,12 @@
+<div  mat-dialog-content>
+
+<mat-list>
+  <div *ngFor="let item of data.list">
+    <mat-list-item>SEASON: {{item.id}} {{item.season}}   || AMOUNT:{{item.amount}} -- PAYED: {{item.payed}} || <button (click)="deletePayement(item.id)"><mat-icon>delete</mat-icon></button></mat-list-item>
+  <mat-divider></mat-divider>
+  </div>
+
+</mat-list>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

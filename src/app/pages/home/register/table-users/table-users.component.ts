@@ -131,6 +131,7 @@ uso il filter di un array perchè il getById da come oggetto undefined
         email: u.email,
         password: u.password,
         username: u.username,
+        society: u.society,
       },
     });
 

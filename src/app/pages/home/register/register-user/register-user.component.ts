@@ -12,24 +12,26 @@ import { IUsers } from '../../interfaces/iusers';
   styleUrls: ['./register-user.component.scss']
 })
 export class RegisterUserComponent implements OnInit {
+
   @ViewChild('f') form!: NgForm;
   bool :boolean = false;
+  society:String | null =this.authService.getSociety()
 
 
   constructor(
-     private authService: AuthService,
-     private abstractService: AbstractServiceService,
-     private router: Router,
-     public dialogRef: MatDialogRef<RegisterUserComponent>,
-     /* prendo i dati passati  per riportarli nell'input scrivo [(ngModel)]="data.name" VEDI HTML*/
-     @Inject(MAT_DIALOG_DATA) public data: {
-                                              id:number,
-                                              name: string,
-                                              surname:string,
-                                              email: string,
-                                              password: string,
-                                              username: string,
-    }
+              private authService: AuthService,
+              private abstractService: AbstractServiceService,
+              private router: Router,
+              public dialogRef: MatDialogRef<RegisterUserComponent>,
+              /* prendo i dati passati  per riportarli nell'input scrivo [(ngModel)]="data.name" VEDI HTML*/
+              @Inject(MAT_DIALOG_DATA) public data: {
+                                                        id:number,
+                                                        name: string,
+                                                        surname:string,
+                                                        email: string,
+                                                        password: string,
+                                                        username: string,
+              }
     ) { }
 
 

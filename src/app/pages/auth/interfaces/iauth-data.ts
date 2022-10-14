@@ -3,6 +3,7 @@ export interface IAuthData {
   "type"?: string;
   "id"?: number;
   "userName"?: string;
+  "society"?: string;
   "roles"?: [];
 }
 

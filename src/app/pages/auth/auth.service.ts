@@ -14,11 +14,15 @@ export class AuthService {
   authSubject = new BehaviorSubject<IAuthData | null>(null);
   helper = new JwtHelperService();
 
+  /* creo variabili di appoggio per ottenere società dal local storage */
+  authData!:any;
+  parsedData:any;
+  parsedSociety!:any;
 
   /* per mandare headers al back-end e poter far funzionare i preauthorize */
   headers: { Authorization?: string;
     "Content-Type":string } = { "Content-Type":"application/json" };
-options= {headers:this.headers}
+  options= {headers:this.headers}
 
   constructor(private http: HttpClient, private router: Router) {
 
@@ -65,5 +69,12 @@ options= {headers:this.headers}
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate([currentRoute]);
     });
+  }
+
+   /* metodo per ottenere da local storage la società dell'admin o user  */
+  getSociety():String | null{
+    this.authData = localStorage.getItem('isAuthenticated')
+    this.parsedData = JSON.parse(this.authData);
+    return this.parsedSociety = this.parsedData.society;
   }
 }
