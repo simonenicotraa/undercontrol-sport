@@ -8,6 +8,7 @@ import { Iatletes } from './interfaces/iatletes';
 import { Imedicalcertificates } from './interfaces/imedicalcertificates';
 import { Ipayment } from './interfaces/ipayment';
 import { Iteams } from './interfaces/iteams';
+import { IteamsDto } from './interfaces/iteams-dto';
 
 @Injectable({
   providedIn: 'root',
@@ -117,16 +118,26 @@ findAllTeam(){
 findTeamById(id:number){
   return this.http.get<Iteams>(environment.APIEndpoint + '/team/'+id,this.options)
 }
-updateTeam(obj: Iteams, id: number){
+deleteTeam(id:number){
+  return  this.http.delete(environment.APIEndpoint + '/team/' + id,this.options);
+}
+updateTeam(obj: IteamsDto, id: number){
 return this.http.put(environment.APIEndpoint+'/team/'+id,obj,this.options);
 }
+/* metodi per aggiungere atleti e coach alle liste */
 patchListAthletes(id: number, obj:Iteams){
   return this.http.patch(environment.APIEndpoint+'/team/updateListAtl/'+id,obj,this.options)
 }
 patchListCoaches(idTeam: number, idCoach:number){
   return this.http.patch(environment.APIEndpoint+'/team/updateListCoach/'+idTeam+'/'+idCoach, this.options)
 }
-
+/* metodi per rimuovere atleti e coach dalle liste */
+patchListRemoveCoaches(idTeam: number|undefined, idCoach:number|undefined){
+  return this.http.patch(environment.APIEndpoint+'/team/updateListRemoveCoach/'+idTeam+'/'+idCoach, this.options)
+}
+patchListRemoveAthlete(idTeam: number|undefined, idAthlete:number|undefined){
+  return this.http.patch(environment.APIEndpoint+'/team/updateListRemoveAtl/'+idTeam+'/'+idAthlete, this.options)
+}
 
 /* ==================================== MEDICAL CERTIFICATES ==================================== */
 insertMedicalCertificates(obj: Imedicalcertificates,id:number){

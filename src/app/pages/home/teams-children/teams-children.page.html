@@ -1,41 +1,64 @@
 <div class="butto">
-  <button mat-raised-button color="accent" (click)="openDialogNewTeam()">Create New Team</button>
+  <button mat-raised-button color="accent" (click)="openDialogNewTeam()">
+    Create New Team
+  </button>
 </div>
 
 <div class="containerCards">
   <div class="card" *ngFor="let team of teams">
-<mat-card class="example-card">
-<mat-accordion>
-      <mat-expansion-panel (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-          <mat-panel-title>
-            <mat-card-title>{{team.name}} {{team.season}} {{team.gender}}</mat-card-title>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
+    <mat-card class="example-card">
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-card-title
+                >{{team.name}} {{team.season}} {{team.gender}}</mat-card-title
+              >
+            </mat-panel-title>
+          </mat-expansion-panel-header>
 
+          <mat-card-content>
+            <h3>Coach</h3>
+            <div class="info" *ngFor="let item of team.coaches">
+              <div class="data">
+                <p>{{item.name}} {{item.surname}}</p>
+              </div>
+              <div>
+                <button (click)="patchListRemoveCoache(team.id, item.id)">
+                  <mat-icon>remove_circle_outline</mat-icon>
+                </button>
+              </div>
+            </div>
 
-  <mat-card-content>
-    <h3>Coach</h3>
-    <ul>
-      <li *ngFor="let item of team.coaches"> {{team.coaches[0].name}} {{team.coaches[0].surname}}</li>
-    </ul>
+            <h3>Players</h3>
+            <div class="info" *ngFor="let item of team.athletes">
+              <div class="data">
+                <p>{{item.name}} {{item.surname}}</p>
+              </div>
+              <div>
+                <button (click)="patchListRemoveAtlete(team.id,item.id)">
+                  <mat-icon>remove_circle_outline</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-card-content>
 
-    <h3>Players</h3>
-    <ul>
-      <li *ngFor="let item of team.athletes"> {{team.athletes[0].name}} {{team.athletes[0].surname}}</li>
-    </ul>
-
-     </mat-card-content>
-
-     <mat-card-actions align="start">
-      <button  (click)="openDialogAthlete(team.id)">Add Athletes</button>
-      <button  (click)="openDialogCoach(team.id)">Add Coaches</button>
-    </mat-card-actions>
-</mat-expansion-panel>
-</mat-accordion>
-</mat-card>
-
+          <mat-card-actions align="start">
+            <button (click)="openDialogAthlete(team.id)">Add Athletes</button>
+            <button (click)="openDialogCoach(team.id)">Add Coaches</button>
+            <button [matMenuTriggerFor]="menu">Options</button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="openDialogUpdateTeam(team.id)">
+                Update Team
+              </button>
+              <button mat-menu-item (click)="deleteTeam(team.id)">
+                Delete Team
+              </button>
+            </mat-menu>
+          </mat-card-actions>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
+  </div>
 </div>
-</div>
-

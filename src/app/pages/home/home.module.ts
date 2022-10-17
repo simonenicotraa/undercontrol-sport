@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { RegisterUserComponent } from './register/register-user/register-user.component';
 import { RegisterAdminComponent } from './register/register-admin/register-admin.component';
@@ -61,7 +62,8 @@ import { ModalViewAllCertificateComponent } from './athletes-children/modal-view
     MatNativeDateModule,
     MatSelectModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSnackBarModule
 
   ],
 })

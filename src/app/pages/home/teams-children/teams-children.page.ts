@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../auth/auth.service';
 import { AbstractServiceService } from '../abstract-service.service';
-import { IAthlCoach } from '../interfaces/iathl-coach';
 import { Iteams } from '../interfaces/iteams';
 import { ModalAddAthletesComponent } from './modal-add-athletes/modal-add-athletes.component';
 import { ModalAddCoachesComponent } from './modal-add-coaches/modal-add-coaches.component';
@@ -21,9 +21,13 @@ selected2 = '';
 panelOpenState = false;
 error= undefined;
 teams:Iteams[] = []
+/* variabile durata snackBar */
+durationInSeconds = 4;
   constructor(
               private abstractService:AbstractServiceService,
-              public dialog:MatDialog) { }
+              private authService:AuthService,
+              public dialog:MatDialog,
+              private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getAllTeams()
@@ -75,6 +79,50 @@ openDialogCoach(id:number) {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+  openSnackBar() {
+    this._snackBar.open('Team Deleted', 'Close',{
+      duration: this.durationInSeconds * 1000
+    }
+    )
+  }
+
+  deleteTeam(id:number){
+     this.abstractService.deleteTeam(id).subscribe();
+      this.openSnackBar()
+      this.getAllTeams()
+  }
+  openDialogUpdateTeam(id:number){
+    let obj = this.teams.filter((team) => team.id === id);
+    let t= obj[0];
+    let dialogRef = this.dialog.open(ModalNewTeamComponent,{
+      data:{
+        id:t.id,
+        name:t.name,
+        season:t.season,
+        gender:t.gender
+      }
+    })
+  }
+  patchListRemoveCoache(idTeam:number|undefined, idCoach:number|undefined){
+return this.abstractService.patchListRemoveCoaches(idTeam, idCoach).subscribe(
+  (resp)=>{
+    console.log(resp);
+    this.error= undefined;
+  }, (err)=>{
+    console.log(err.error);
+    this.error = err.error;
+  })
+  }
+  patchListRemoveAtlete(idTeam:number|undefined, idAthlete:number|undefined){
+    return this.abstractService.patchListRemoveAthlete(idTeam, idAthlete).subscribe(
+      (resp)=>{
+        console.log(resp);
+        this.error= undefined;
+      }, (err)=>{
+        console.log(err.error);
+        this.error = err.error;
+      })
   }
 }
 

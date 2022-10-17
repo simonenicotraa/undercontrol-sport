@@ -54,9 +54,15 @@
             <p> Address: {{element.address}}, {{element.cap}}</p>
             <p *ngIf="element.listCertificates[0]!=undefined">
               Medical Certificate:<br>
-              productionDate: {{element.listCertificates[element.listCertificates.length-1].productionDate}}<br>
               expirationDate:{{element.listCertificates[element.listCertificates.length-1].expirationDate}}
+              <span class="valid" *ngIf="element.listCertificates[element.listCertificates.length-1].validation==true">
+                  VALID
+              </span>
+              <span class="invalid" *ngIf="element.listCertificates[element.listCertificates.length-1].validation==false">
+                  INVALID
+              </span>
             </p>
+
             <p *ngIf="element.listPayments[0]!=undefined">
                 Payment:<br>
                  AMOUNT --> {{element.listPayments[0].amount}}  <br>

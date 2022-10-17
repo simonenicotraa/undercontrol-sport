@@ -24,7 +24,19 @@ div{
       margin:0;
     }
   }
-
+.valid{
+  padding:0.1rem;
+  border-radius: 5px;
+  border: 2px solid green;
+  background-color: rgba(130, 255, 130, 0.585)
+}
+.invalid{
+  padding:0.1rem;
+  margin:auto;
+  border-radius: 5px;
+  border: 2px solid red;
+  background-color: rgba(249, 132, 132, 0.531);
+}
 tr.example-detail-row {
   height: 0;
 }
