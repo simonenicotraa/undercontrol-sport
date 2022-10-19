@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/pages/auth/auth.service';
 import { AbstractServiceService } from '../../abstract-service.service';
 
@@ -15,12 +16,14 @@ export class RegisterAthletesComponent implements OnInit {
   bool :boolean = false;
 
   society:String | null =this.authService.getSociety()
-
+  /* variabile durata snackBar */
+  durationInSeconds = 4;
 
   constructor(
               private abstractService: AbstractServiceService,
               private authService: AuthService,
               public dialogRef: MatDialogRef<RegisterAthletesComponent>,
+              private _snackBar: MatSnackBar,
               /* prendo i dati passati  per riportarli nell'input scrivo [(ngModel)]="data.name" VEDI HTML*/
               @Inject(MAT_DIALOG_DATA) public data: {
                                                             id:number,
@@ -32,6 +35,7 @@ export class RegisterAthletesComponent implements OnInit {
                                                             fiscalCode: string,
                                                             address: string,
                                                             cap: string,}
+
     ) { }
 
 
@@ -50,7 +54,14 @@ export class RegisterAthletesComponent implements OnInit {
   closeDialog(){
     this.dialogRef.close();
   }
-
+  openSnackBar(stringa:string) {
+    this._snackBar.open(stringa, 'Close',{
+      horizontalPosition: 'center',
+      verticalPosition:'top',
+      duration: this.durationInSeconds * 1000
+    }
+    )
+  }
   save() {
     console.log(this.form.value)
         this.abstractService.insertAthlete(this.form.value).subscribe(
@@ -58,6 +69,7 @@ export class RegisterAthletesComponent implements OnInit {
         console.log(resp);
         this.error = undefined;
         this.closeDialog()
+        this.openSnackBar('Athlete Saved');
        this.authService.reloadRoute()
       },
       (err) => {
@@ -72,6 +84,7 @@ export class RegisterAthletesComponent implements OnInit {
         console.log(resp);
         this.error = undefined;
         this.closeDialog();
+        this.openSnackBar('Athlete Updated');
         this.authService.reloadRoute()
       }, (err)=> {
         console.log(err.error);

@@ -7,6 +7,7 @@ import {
 } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from 'src/app/pages/auth/auth.service';
 import { AbstractServiceService } from '../../abstract-service.service';
@@ -44,14 +45,18 @@ export class TableAthletesComponent implements OnInit {
   certificates: Imedicalcertificates[] = [];
 
   constructor(
-    private abstractService: AbstractServiceService,
-    public dialog: MatDialog,
-    private authService: AuthService
-  ) {}
+              private abstractService: AbstractServiceService,
+              public dialog: MatDialog,
+              private authService: AuthService,
+              private _snackBar: MatSnackBar
+              ) {}
   /* per costruzione della tabella. Settaggio dell'header della tab */
   columnsToDisplay: string[] = ['name', 'surname', 'fiscalCode'];
+  /* settaggio per espansione riga Angular material */
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: any | null;
+  /* variabile durata snackBar */
+  durationInSeconds = 4;
 
   ngOnInit(): void {
 
@@ -59,6 +64,7 @@ export class TableAthletesComponent implements OnInit {
     this.getAllPayments();
     this.getAllMedicalCertificates();
   }
+
   /* metodo per filtrare tabella */
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -101,15 +107,17 @@ export class TableAthletesComponent implements OnInit {
       }
     );
   }
+  openSnackBar(stringa:string) {
+    this._snackBar.open(stringa, 'Close',{
+      horizontalPosition: 'center',
+      verticalPosition:'top',
+      duration: this.durationInSeconds * 1000
+    }
+    )
+  }
   deleteAthlete(id: number) {
-    this.abstractService.deleteAthletes(id).subscribe(
-      (resp) => {
-        console.log(resp);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.abstractService.deleteAthletes(id).subscribe();
+    this.openSnackBar('Athlete Deleted')
     this.getAllAthletes();
     this.authService.reloadRoute();
   }

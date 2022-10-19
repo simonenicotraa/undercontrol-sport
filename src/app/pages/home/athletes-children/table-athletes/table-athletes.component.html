@@ -65,8 +65,12 @@
 
             <p *ngIf="element.listPayments[0]!=undefined">
                 Payment:<br>
-                 AMOUNT --> {{element.listPayments[0].amount}}  <br>
-                 PAYED --> {{element.listPayments[0].payed}}
+                 AMOUNT --> {{element.listPayments[element.listPayments.length-1].amount}}  <br>
+                 PAYED --> {{element.listPayments[element.listPayments.length-1].payed}}<br>
+                 {{element.listPayments[element.listPayments.length-1].paymentStatus}} <br>
+                 <mat-progress-bar mode="determinate"
+                 value="{{element.listPayments[element.listPayments.length-1].payed*100/element.listPayments[element.listPayments.length-1].amount}}"></mat-progress-bar>
+
             </p>
 
           </div>
@@ -87,7 +91,6 @@
               <button  color="warn" (click)="openDialogPayment(element.id)" >Add Payment</button><br>
               <button  color="warn" (click)="openDialogPaymentUpdate(element.listPayments[0].id)" >Update</button><br>
               <button  color="warn" (click)="openDialogViewAllPayement(element.id)" >View all Payments</button>
-
             </mat-menu>
 
           </div>
