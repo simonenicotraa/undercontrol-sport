@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ThemeService } from 'src/app/theme.service';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
@@ -8,11 +10,29 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  isDarkMode!: boolean;
+  showFiller = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  toggleControl = new FormControl(false);
+  @HostBinding('class') className=''
+  constructor(
+              private authService: AuthService,
+              private themeService: ThemeService,
+              private router: Router) {
+                themeService.initTheme()
+               }
 
   ngOnInit(): void {
+
   }
+ toggleDarkMode() {
+    this.isDarkMode = this.themeService.isDarkMode();
+
+    this.isDarkMode
+      ? this.themeService.update('light-mode')
+      : this.themeService.update('dark-mode');
+  }
+
   logout() {
     alert('Arrivederci');
     this.authService.logout();
