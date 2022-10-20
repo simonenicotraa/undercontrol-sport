@@ -2,7 +2,10 @@
 
 <mat-list>
   <div *ngFor="let item of data.list">
-    <mat-list-item>SEASON: {{item.id}} {{item.season}}   || AMOUNT:{{item.amount}} -- PAYED: {{item.payed}} || <button (click)="deletePayement(item.id)"><mat-icon>delete</mat-icon></button></mat-list-item>
+    <mat-list-item>
+      <div>SEASON:{{item.season}}   || AMOUNT:{{item.amount}} -- PAYED: {{item.payed}}</div>
+      <div><button (click)="deletePayement(item.id)"><mat-icon>delete</mat-icon></button></div>
+    </mat-list-item>
   <mat-divider></mat-divider>
   </div>
 

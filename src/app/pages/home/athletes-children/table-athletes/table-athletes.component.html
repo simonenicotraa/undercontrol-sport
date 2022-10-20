@@ -75,22 +75,22 @@
 
           </div>
           <div>
-            <button mat-mini-fab color="warn" (click)="deleteAthlete(element.id)"><mat-icon>delete</mat-icon></button><br>
-            <button mat-mini-fab color="warn" (click)="openDialog(element.id)" ><mat-icon>edit</mat-icon></button>
+            <button  matTooltip="Delete Athlete" matTooltipPosition="below" mat-mini-fab color="warn"  (click)="deleteAthlete(element.id)"><mat-icon>delete</mat-icon></button><br>
+            <button matTooltip="Update Athlete" matTooltipPosition="below" mat-mini-fab color="warn" (click)="openDialog(element.id)" ><mat-icon>edit</mat-icon></button>
 <!-- MINI-MENU CERTIFICATI -->
             <button mat-button [matMenuTriggerFor]="menu1">MedicalCertificate</button>
             <mat-menu #menu1="matMenu">
-            <button  color="warn" (click)="openDialogCertificate(element.id)" >Add Certificate</button><br>
-            <button  color="warn" (click)="openDialogCertificateUpdate(element.listCertificates[0].id)" >Update Certificate</button><br>
-            <button  color="warn" (click)="openDialogViewAllCertificate(element.id)" >View all Certificates</button>
+            <button mat-stroked-button (click)="openDialogCertificate(element.id)" >Add Certificate</button><br>
+            <button mat-stroked-button  (click)="openDialogCertificateUpdate(element.listCertificates[0].id)" >Update Last Certificate</button><br>
+            <button mat-stroked-button  (click)="openDialogViewAllCertificate(element.id)" >View all Certificates</button>
 
           </mat-menu>
 <!-- MINI-MENU PAGAMENTI -->
             <button mat-button [matMenuTriggerFor]="menu">Payment</button>
             <mat-menu #menu="matMenu">
-              <button  color="warn" (click)="openDialogPayment(element.id)" >Add Payment</button><br>
-              <button  color="warn" (click)="openDialogPaymentUpdate(element.listPayments[0].id)" >Update</button><br>
-              <button  color="warn" (click)="openDialogViewAllPayement(element.id)" >View all Payments</button>
+              <button  mat-stroked-button (click)="openDialogPayment(element.id)" >Add Payment</button><br>
+              <button  mat-stroked-button (click)="openDialogPaymentUpdate(element.listPayments[0].id)" >Update Last Payment</button><br>
+              <button  mat-stroked-button (click)="openDialogViewAllPayement(element.id)" >View all Payments</button>
             </mat-menu>
 
           </div>

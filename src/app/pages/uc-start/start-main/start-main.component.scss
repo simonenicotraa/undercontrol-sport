@@ -1,14 +1,10 @@
 p {
   font-size: 1.3rem;
 }
+
 .blockColorato {
-  background: rgb(76, 175, 80);
-  background: linear-gradient(
-    180deg,
-    rgba(76, 175, 80, 1) 0%,
-    rgba(207, 233, 211, 1) 57%
-  );
-  padding: 5%;
+   background: rgba(76, 175, 79, 0.649);
+   padding: 5%;
 }
 .card {
   display: flex;
@@ -24,7 +20,7 @@ p {
   }
 }
 .info{
-  background-color: #fff0dfcf;
+  background-color: #fccd97b1;
   text-align: center;
   height: auto;
   padding: 4rem;

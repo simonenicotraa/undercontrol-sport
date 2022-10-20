@@ -109,19 +109,24 @@ return this.abstractService.patchListRemoveCoaches(idTeam, idCoach).subscribe(
   (resp)=>{
     console.log(resp);
     this.error= undefined;
+    this.getAllTeams()
   }, (err)=>{
     console.log(err.error);
     this.error = err.error;
+    this.getAllTeams()
   })
+
   }
   patchListRemoveAtlete(idTeam:number|undefined, idAthlete:number|undefined){
     return this.abstractService.patchListRemoveAthlete(idTeam, idAthlete).subscribe(
       (resp)=>{
         console.log(resp);
         this.error= undefined;
+        this.getAllTeams()
       }, (err)=>{
         console.log(err.error);
         this.error = err.error;
+        this.getAllTeams()
       })
   }
 }

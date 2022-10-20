@@ -49,8 +49,12 @@
             <p> Ruolo: {{element.roles[0].roleName}} </p>
           </div>
           <div *ngIf="userLog.roles[0]==='ROLE_ADMIN'">
-            <button mat-mini-fab color="warn"  (click)="deleteUser(element.id)"><mat-icon>delete</mat-icon></button>
-            <button mat-mini-fab *ngIf="element.roles[0].roleName=== 'ROLE_ADMIN'" color="warn"  (click)="openDialogAdmin(element.id)"><mat-icon>edit</mat-icon></button>
+            <button mat-mini-fab
+            matTooltip="Delete"
+            matTooltipPosition="below" color="warn"  (click)="deleteUser(element.id)"><mat-icon>delete</mat-icon></button>
+            <button mat-mini-fab
+            matTooltip="Update"
+            matTooltipPosition="below" *ngIf="element.roles[0].roleName=== 'ROLE_ADMIN'" color="warn"  (click)="openDialogAdmin(element.id)"><mat-icon>edit</mat-icon></button>
             <button mat-mini-fab *ngIf="element.roles[0].roleName=== 'ROLE_USER'"   (click)="openDialogUser(element.id)"><mat-icon>edit</mat-icon></button>
           </div>
 

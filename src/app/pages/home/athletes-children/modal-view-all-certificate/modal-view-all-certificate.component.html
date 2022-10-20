@@ -4,12 +4,12 @@
     <div *ngFor="let item of data.list">
       <mat-list-item>
         <div>
-        <p>PRODUCTION DATE --> {{item.productionDate}} </p>
-        <p>EXPIRATION DATE --> {{item.expirationDate}}</p>
+        <p>PRODUCTION -> {{item.productionDate}} </p>
+        <p>EXPIRATION -> {{item.expirationDate}}</p>
 
         </div>
         <div>
-          <button (click)="deleteCertificate(item.id)"><mat-icon>delete</mat-icon></button>
+          <button matTooltip="Delete Certificate" matTooltipPosition="below" (click)="deleteCertificate(item.id)"><mat-icon>delete</mat-icon></button>
         </div>
       </mat-list-item>
     <mat-divider></mat-divider>

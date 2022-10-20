@@ -95,6 +95,7 @@ getAllTeams(){
   this.service.patchListAthletes(idTeam,team[0]).subscribe(
     (resp) => {
       console.log(resp)
+      this.getAllTeams()
     },
     (err) => {
       console.log(err.error);

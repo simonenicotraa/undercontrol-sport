@@ -42,11 +42,11 @@ tr.example-detail-row {
 }
 
 tr.example-element-row:not(.example-expanded-row):hover {
-  background: whitesmoke;
+background-color: rgba(80, 112, 80, 0.398);
 }
 
 tr.example-element-row:not(.example-expanded-row):active {
-  background: #efefef;
+/*   background: #efefef; */
 }
 
 .example-element-row td {
@@ -65,4 +65,7 @@ tr.example-element-row:not(.example-expanded-row):active {
   height: auto;
   width: 90%;
   margin: 0 auto;
+}
+.mat-stroked-button{
+  width: 100%;
 }
