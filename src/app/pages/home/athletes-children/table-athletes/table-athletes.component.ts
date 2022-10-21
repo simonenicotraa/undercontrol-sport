@@ -39,7 +39,7 @@ import { RegisterAthletesComponent } from '../register-athletes/register-athlete
 export class TableAthletesComponent implements OnInit {
   payments: Ipayment[] = [];
   athletes: Iatletes[] = [];
-  /* variabile per costruzione della tabella */
+  /* variabili per costruzione della tabella */
   dataSource = new MatTableDataSource(this.athletes);
   error = undefined;
   certificates: Imedicalcertificates[] = [];
@@ -221,7 +221,7 @@ export class TableAthletesComponent implements OnInit {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      this.authService.reloadRoute();
     });
   }
   /* apertura modal per vedere tutti i pagamenti di uno user */

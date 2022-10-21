@@ -44,9 +44,11 @@ import { ModalAddPaymentComponent } from './athletes-children/modal-add-payment/
 import {MatMenuModule} from '@angular/material/menu';
 import { ModalViewAllPaymentComponent } from './athletes-children/modal-view-all-payment/modal-view-all-payment.component';
 import { ModalViewAllCertificateComponent } from './athletes-children/modal-view-all-certificate/modal-view-all-certificate.component';
+import { TableExpirationMedicalcertificateComponent } from './userinterface-children/table-expiration-medicalcertificate/table-expiration-medicalcertificate.component';
+import { TablePaymentComponent } from './userinterface-children/table-payment/table-payment.component';
 
 @NgModule({
-  declarations: [HomeComponent, RegisterChildrenPage, RegisterUserComponent, RegisterAdminComponent, UserinterfaceChildrenPage, AthletesChildrenPage, CoachesChildrenPage, TeamsChildrenPage, TableUsersComponent, RegisterAthletesComponent, RegisterCoachesComponent, TableAthletesComponent, TableCoachesComponent, ModalAddAthletesComponent, ModalAddCoachesComponent, ModalNewTeamComponent, ModalAddCertificateComponent, ModalAddPaymentComponent, ModalViewAllPaymentComponent, ModalViewAllCertificateComponent],
+  declarations: [HomeComponent, RegisterChildrenPage, RegisterUserComponent, RegisterAdminComponent, UserinterfaceChildrenPage, AthletesChildrenPage, CoachesChildrenPage, TeamsChildrenPage, TableUsersComponent, RegisterAthletesComponent, RegisterCoachesComponent, TableAthletesComponent, TableCoachesComponent, ModalAddAthletesComponent, ModalAddCoachesComponent, ModalNewTeamComponent, ModalAddCertificateComponent, ModalAddPaymentComponent, ModalViewAllPaymentComponent, ModalViewAllCertificateComponent, TableExpirationMedicalcertificateComponent, TablePaymentComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

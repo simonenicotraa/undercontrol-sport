@@ -2,9 +2,12 @@
   <div>
     <!-- metto ngIf sennò mi da errore in console.
     legge prima html e poi dopo esegue metodi e quindi non trova proprieta-->
-<h1 *ngIf="utLoggato!=null">Benvenuto {{utLoggato.username}}</h1>
+<h1 *ngIf="utLoggato!=null">Welcome {{utLoggato.username}}</h1>
   </div>
 <div>
-
+<app-table-expiration-medicalcertificate></app-table-expiration-medicalcertificate>
+</div>
+<div>
+  <app-table-payment></app-table-payment>
 </div>
 </div>

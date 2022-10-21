@@ -3,5 +3,5 @@ export interface Ipayment {
 season: string,
 amount:number,
 payed?:number
-payementStatus?:boolean
+paymentStatus?:boolean
 }
