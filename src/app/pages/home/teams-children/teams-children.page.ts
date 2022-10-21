@@ -91,6 +91,7 @@ openDialogCoach(id:number) {
      this.abstractService.deleteTeam(id).subscribe();
       this.openSnackBar()
       this.getAllTeams()
+      this.authService.reloadRoute()
   }
   openDialogUpdateTeam(id:number){
     let obj = this.teams.filter((team) => team.id === id);

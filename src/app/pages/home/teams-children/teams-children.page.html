@@ -50,10 +50,10 @@
             <button [matMenuTriggerFor]="menu">Options</button>
             <mat-menu #menu="matMenu">
               <button mat-menu-item (click)="openDialogUpdateTeam(team.id)">
-                Update Team
+                <mat-icon>edit</mat-icon> Update Team
               </button>
               <button mat-menu-item (click)="deleteTeam(team.id)">
-                Delete Team
+                <mat-icon>delete</mat-icon> Delete Team
               </button>
             </mat-menu>
           </mat-card-actions>
