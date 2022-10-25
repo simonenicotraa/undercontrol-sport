@@ -21,10 +21,10 @@ export class ModalNewTeamComponent implements OnInit {
   selected2 = '';
   error= undefined;
   constructor(
+              private _snackBar: MatSnackBar,
               public dialogRef: MatDialogRef<ModalNewTeamComponent>,
               private authService: AuthService,
               private abstractService:AbstractServiceService,
-              private _snackBar: MatSnackBar,
               /* prendo i dati passati  per riportarli nell'input scrivo [(ngModel)]="data.name" VEDI HTML*/
               @Inject(MAT_DIALOG_DATA) public data: {
                 id:number,
@@ -37,6 +37,14 @@ export class ModalNewTeamComponent implements OnInit {
   ngOnInit(): void {
     this.verificaDati();
   }
+  openSnackBar(stringa:string) {
+    this._snackBar.open(stringa, 'Close',{
+      horizontalPosition: 'center',
+      verticalPosition:'top',
+      duration: this.durationInSeconds * 1000
+    }
+    )
+  }
   verificaDati(){
     /* controllo se this.data è nullo && con hasOwnproperty controllo se data.id esiste */
         if (this.data && this.data.hasOwnProperty("id") ){    /* ("id" in this.data) */
@@ -48,14 +56,7 @@ export class ModalNewTeamComponent implements OnInit {
   closedialog(){
     this.dialogRef.close();
   }
-  openSnackBar(stringa:string) {
-    this._snackBar.open(stringa, 'Close',{
-      duration: this.durationInSeconds * 1000,
-      horizontalPosition: 'center',
-      verticalPosition:'top',
-    }
-    )
-  }
+
   save() {
     console.log(this.form.value);
     return this.abstractService.insertTeam(this.form.value).subscribe(

@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/pages/auth/auth.service';
 import { AbstractServiceService } from '../../abstract-service.service';
 import { Imedicalcertificates } from '../../interfaces/imedicalcertificates';
@@ -11,7 +12,9 @@ import { Imedicalcertificates } from '../../interfaces/imedicalcertificates';
 })
 export class ModalViewAllCertificateComponent implements OnInit {
 error=undefined
-  constructor(  private abstractService: AbstractServiceService,
+durationInSeconds=4
+  constructor(  private _snackBar: MatSnackBar,
+                private abstractService: AbstractServiceService,
                 private authService: AuthService,
                 public dialogRef: MatDialogRef<ModalViewAllCertificateComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: {
@@ -37,11 +40,20 @@ deleteCertifica(id:number|undefined){
   (resp) => {
         console.log(resp);
         this.closeDialog()
+        this.openSnackBar("Medical Certificate deleted")
         this.authService.reloadRoute()
       },
       (err) => {
         console.log(err);
       }
     );
+}
+openSnackBar(stringa:string) {
+  this._snackBar.open(stringa, 'Close',{
+    horizontalPosition: 'center',
+    verticalPosition:'top',
+    duration: this.durationInSeconds*1000
+  }
+  )
 }
 }

@@ -101,7 +101,6 @@ getAllTeams(){
       console.log(err.error);
     }
   );
-  this.service2.reloadRoute();
   this.closeDialog();
    }
 }

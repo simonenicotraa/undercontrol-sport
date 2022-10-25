@@ -43,20 +43,19 @@ export class TableAthletesComponent implements OnInit {
   dataSource = new MatTableDataSource(this.athletes);
   error = undefined;
   certificates: Imedicalcertificates[] = [];
-
+   /* variabile durata snackBar */
+   durationInSeconds = 4;
   constructor(
+              private _snackBar: MatSnackBar,
               private abstractService: AbstractServiceService,
               public dialog: MatDialog,
               private authService: AuthService,
-              private _snackBar: MatSnackBar
               ) {}
   /* per costruzione della tabella. Settaggio dell'header della tab */
   columnsToDisplay: string[] = ['name', 'surname', 'fiscalCode'];
   /* settaggio per espansione riga Angular material */
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: any | null;
-  /* variabile durata snackBar */
-  durationInSeconds = 4;
 
   ngOnInit(): void {
 
@@ -64,7 +63,14 @@ export class TableAthletesComponent implements OnInit {
     this.getAllPayments();
     this.getAllMedicalCertificates();
   }
-
+  openSnackBar(stringa:string) {
+    this._snackBar.open(stringa, 'Close',{
+      horizontalPosition: 'center',
+      verticalPosition:'top',
+      duration: this.durationInSeconds * 1000
+    }
+    )
+  }
   /* metodo per filtrare tabella */
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -107,14 +113,7 @@ export class TableAthletesComponent implements OnInit {
       }
     );
   }
-  openSnackBar(stringa:string) {
-    this._snackBar.open(stringa, 'Close',{
-      horizontalPosition: 'center',
-      verticalPosition:'top',
-      duration: this.durationInSeconds * 1000
-    }
-    )
-  }
+
   deleteAthlete(id: number) {
     this.abstractService.deleteAthletes(id).subscribe();
     this.openSnackBar('Athlete Deleted')

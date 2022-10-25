@@ -41,5 +41,6 @@ private getColorTheme() {
     this.colorTheme = 'light-mode';
   }
 }
+
 }
 

@@ -12,7 +12,12 @@
   align-items: center;
   justify-content: center; */
 }
-
+.icona{
+  cursor: pointer;
+}
+mat-toolbar{
+  justify-content: space-between;
+}
 .example-sidenav {
   padding: 20px;
 }

@@ -7,6 +7,7 @@ import {
 } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from 'src/app/pages/auth/auth.service';
 import { AbstractServiceService } from '../../abstract-service.service';
@@ -32,11 +33,14 @@ export class TableCoachesComponent implements OnInit {
 
   coaches: IAthlCoach[] = [];
   dataSource = new MatTableDataSource(this.coaches);
-
+  /* variabile durata snackBar */
+  durationInSeconds = 4;
   constructor(
-    private service: AbstractServiceService,
-    public dialog: MatDialog,
-    private authService: AuthService
+              private _snackBar: MatSnackBar,
+              private service: AbstractServiceService,
+              public dialog: MatDialog,
+              private authService: AuthService,
+
   ) { }
   columnsToDisplay: string[] = ['name', 'surname', 'fiscalCode'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
@@ -67,14 +71,8 @@ export class TableCoachesComponent implements OnInit {
   }
 
   deleteCoach(id: number) {
-    this.service.deleteCoach(id).subscribe(
-      (resp) => {
-        console.log(resp);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.service.deleteCoach(id).subscribe();
+    this.openSnackBar("Coach Deleted")
     this.authService.reloadRoute()
   }
 
@@ -100,7 +98,17 @@ export class TableCoachesComponent implements OnInit {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      this.openSnackBar("Coach Updated")
+      this.authService.reloadRoute()
     });
   }
+  openSnackBar(stringa:string) {
+    this._snackBar.open(stringa, 'Close',{
+      horizontalPosition: 'center',
+      verticalPosition:'top',
+      duration: this.durationInSeconds * 1000
+    }
+    )
+  }
 }
+

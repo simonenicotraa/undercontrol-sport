@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment.prod';
 import { IAuthData } from '../auth/interfaces/iauth-data';
 import { ISignupData } from '../auth/interfaces/isignup-data';
@@ -14,7 +15,8 @@ import { IteamsDto } from './interfaces/iteams-dto';
   providedIn: 'root',
 })
 export class AbstractServiceService {
-
+/* variabile durata snackBar */
+durationInSeconds = 4;
 /* per mandare headers al back-end e poter far funzionare i preauthorize */
   headers: { Authorization?: string;
               "Content-Type":string } = { "Content-Type":"application/json" };

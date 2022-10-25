@@ -74,11 +74,11 @@
             </p>
 
           </div>
-          <div>
-            <button  matTooltip="Delete Athlete" matTooltipPosition="below" mat-mini-fab color="warn"  (click)="deleteAthlete(element.id)"><mat-icon>delete</mat-icon></button><br>
-            <button matTooltip="Update Athlete" matTooltipPosition="below" mat-mini-fab color="warn" (click)="openDialog(element.id)" ><mat-icon>edit</mat-icon></button>
+          <div class="bottoni">
+            <button  matTooltip="Delete Athlete" matTooltipPosition="below" mat-flat-button color="warn"  (click)="deleteAthlete(element.id)"><mat-icon>delete</mat-icon></button><br>
+            <button matTooltip="Update Athlete" matTooltipPosition="below" mat-flat-button color="accent" (click)="openDialog(element.id)" ><mat-icon>edit</mat-icon></button><br>
 <!-- MINI-MENU CERTIFICATI -->
-            <button mat-button [matMenuTriggerFor]="menu1">MedicalCertificate</button>
+            <button mat-raised-button [matMenuTriggerFor]="menu1">MedicalCertificate</button><br>
             <mat-menu #menu1="matMenu">
             <button mat-stroked-button (click)="openDialogCertificate(element.id)" >Add Certificate</button><br>
             <button mat-stroked-button  (click)="openDialogCertificateUpdate(element.listCertificates[0].id)" >Update Last Certificate</button><br>
@@ -86,7 +86,7 @@
 
           </mat-menu>
 <!-- MINI-MENU PAGAMENTI -->
-            <button mat-button [matMenuTriggerFor]="menu">Payment</button>
+            <button mat-raised-button [matMenuTriggerFor]="menu">Payment</button><br>
             <mat-menu #menu="matMenu">
               <button  mat-stroked-button (click)="openDialogPayment(element.id)" >Add Payment</button><br>
               <button  mat-stroked-button (click)="openDialogPaymentUpdate(element.listPayments[0].id)" >Update Last Payment</button><br>

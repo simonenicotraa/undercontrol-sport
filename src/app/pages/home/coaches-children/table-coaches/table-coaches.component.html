@@ -58,9 +58,9 @@
             <p> Address: {{element.address}} {{element.cap}}</p>
 
           </div>
-          <div>
-            <button mat-mini-fab color="warn" (click)="deleteCoach(element.id)"><mat-icon>delete</mat-icon></button>
-            <button mat-mini-fab  color="warn"  (click)="openDialog(element.id)"><mat-icon>edit</mat-icon></button>
+          <div  class="bottoni">
+            <button mat-mini-fab matTooltip="Delete Coach" matTooltipPosition="below" color="warn" (click)="deleteCoach(element.id)"><mat-icon>delete</mat-icon></button> <br>
+            <button mat-mini-fab  matTooltip="Update Coach" matTooltipPosition="below" mat-flat-button (click)="openDialog(element.id)"><mat-icon>edit</mat-icon></button>
           </div>
 
         </div>

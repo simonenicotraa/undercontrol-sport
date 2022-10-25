@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../auth/auth.service';
@@ -21,18 +20,28 @@ selected2 = '';
 panelOpenState = false;
 error= undefined;
 teams:Iteams[] = []
-/* variabile durata snackBar */
-durationInSeconds = 4;
+
+ /* variabile durata snackBar */
+ durationInSeconds = 4;
   constructor(
+              private _snackBar: MatSnackBar,
               private abstractService:AbstractServiceService,
               private authService:AuthService,
               public dialog:MatDialog,
-              private _snackBar: MatSnackBar) { }
+             ) { }
 
   ngOnInit(): void {
     this.getAllTeams()
   }
 
+  openSnackBar(stringa:string) {
+    this._snackBar.open(stringa, 'Close',{
+      horizontalPosition: 'center',
+      verticalPosition:'top',
+      duration: this.durationInSeconds * 1000
+    }
+    )
+  }
 
  getAllTeams(){
   return this.abstractService.findAllTeam().subscribe(
@@ -62,7 +71,7 @@ openDialogAthlete(id:number) {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      this.authService.reloadRoute();
     });
   }
 
@@ -77,22 +86,19 @@ openDialogCoach(id:number) {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      this.authService.reloadRoute();
     });
   }
-  openSnackBar() {
-    this._snackBar.open('Team Deleted', 'Close',{
-      duration: this.durationInSeconds * 1000
-    }
-    )
-  }
+
+
 
   deleteTeam(id:number){
      this.abstractService.deleteTeam(id).subscribe();
-      this.openSnackBar()
+      this.openSnackBar("Team Deleted")
       this.getAllTeams()
       this.authService.reloadRoute()
   }
+
   openDialogUpdateTeam(id:number){
     let obj = this.teams.filter((team) => team.id === id);
     let t= obj[0];
@@ -105,6 +111,7 @@ openDialogCoach(id:number) {
       }
     })
   }
+  /* funzione per rimuovere coach dal team */
   patchListRemoveCoache(idTeam:number|undefined, idCoach:number|undefined){
 return this.abstractService.patchListRemoveCoaches(idTeam, idCoach).subscribe(
   (resp)=>{
@@ -116,8 +123,8 @@ return this.abstractService.patchListRemoveCoaches(idTeam, idCoach).subscribe(
     this.error = err.error;
     this.getAllTeams()
   })
-
   }
+  /* funzione per rimuovere Atleta dal team */
   patchListRemoveAtlete(idTeam:number|undefined, idAthlete:number|undefined){
     return this.abstractService.patchListRemoveAthlete(idTeam, idAthlete).subscribe(
       (resp)=>{

@@ -14,16 +14,15 @@ export class RegisterAthletesComponent implements OnInit {
   @ViewChild('f') form!: NgForm;
   error=undefined
   bool :boolean = false;
-
+   /* variabile durata snackBar */
+   durationInSeconds = 4;
   society:String | null =this.authService.getSociety()
-  /* variabile durata snackBar */
-  durationInSeconds = 4;
 
-  constructor(
+
+  constructor(private _snackBar: MatSnackBar,
               private abstractService: AbstractServiceService,
               private authService: AuthService,
               public dialogRef: MatDialogRef<RegisterAthletesComponent>,
-              private _snackBar: MatSnackBar,
               /* prendo i dati passati  per riportarli nell'input scrivo [(ngModel)]="data.name" VEDI HTML*/
               @Inject(MAT_DIALOG_DATA) public data: {
                                                             id:number,
@@ -54,19 +53,11 @@ export class RegisterAthletesComponent implements OnInit {
   closeDialog(){
     this.dialogRef.close();
   }
-  openSnackBar(stringa:string) {
-    this._snackBar.open(stringa, 'Close',{
-      horizontalPosition: 'center',
-      verticalPosition:'top',
-      duration: this.durationInSeconds * 1000
-    }
-    )
-  }
+
   save() {
     console.log(this.form.value)
         this.abstractService.insertAthlete(this.form.value).subscribe(
       (resp) => {
-        console.log(resp);
         this.error = undefined;
         this.closeDialog()
         this.openSnackBar('Athlete Saved');
@@ -81,7 +72,6 @@ export class RegisterAthletesComponent implements OnInit {
   update(id: number){
     this.abstractService.updateAthlete(this.form.value, id).subscribe(
       (resp) => {
-        console.log(resp);
         this.error = undefined;
         this.closeDialog();
         this.openSnackBar('Athlete Updated');
@@ -92,5 +82,12 @@ export class RegisterAthletesComponent implements OnInit {
       }
     )
   }
-
+  openSnackBar(stringa:string) {
+    this._snackBar.open(stringa, 'Close',{
+      horizontalPosition: 'center',
+      verticalPosition:'top',
+      duration: this.durationInSeconds * 1000
+    }
+    )
+  }
 }

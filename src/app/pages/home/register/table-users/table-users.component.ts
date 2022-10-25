@@ -56,7 +56,7 @@ export class TableUsersComponent implements OnInit {
   getUtLoggato() {
     this.json=(localStorage.getItem('isAuthenticated'));
     this.userLog = JSON.parse(this.json)
-    console.log(this.userLog.roles[0])
+    /* console.log(this.userLog.roles[0])  ruolo dell'utente loggato*/
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -66,10 +66,8 @@ export class TableUsersComponent implements OnInit {
   getAllUsers() {
     this.service.findAllUsers().subscribe(
       (resp) => {
-        console.log(resp);
         this.users = resp;
         this.utenti = resp;
-        console.log(this.users);
         this.dataSource = new MatTableDataSource(this.users);
       },
       (err) => {
@@ -79,14 +77,7 @@ export class TableUsersComponent implements OnInit {
   }
 
   deleteUser(id: number) {
-    this.service.deleteUser(id).subscribe(
-      (resp) => {
-        console.log(resp);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.service.deleteUser(id).subscribe( );
     this.getAllUsers();
     this.authService.reloadRoute()
   }
@@ -99,7 +90,7 @@ uso il filter di un array perchè il getById da come oggetto undefined
     let obj = this.utenti.filter((user) => user.id === id);
     JSON.stringify(obj).toString;
     //mi restituisce un array di un solo oggetto
-    console.log(obj[0]);
+    /* console.log(obj[0]); */
     //seleziono oggetto dentro array
     let u =obj[0];
     //passo i dati al register.user.component.ts
@@ -121,7 +112,7 @@ uso il filter di un array perchè il getById da come oggetto undefined
   openDialogAdmin(id: number) {
     let obj = this.utenti.filter((user) => user.id === id);
     JSON.stringify(obj).toString;
-    console.log(obj[0]);
+    /* console.log(obj[0]); */
     let u =obj[0];
     let dialogRef = this.dialog.open(RegisterAdminComponent, {
       data: {

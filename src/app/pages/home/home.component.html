@@ -1,9 +1,13 @@
 <!-- =====================  NAVBAR  ======================
         drawer.toggle permette di aprire la sidebar -->
 <mat-toolbar color="primary">
-  <mat-icon (click)="drawer.toggle()">menu</mat-icon><span>UnderControl - Sport</span>
 
-  <mat-slide-toggle mat-list (click)="toggleDarkMode()" [(ngModel)]="isDarkMode"></mat-slide-toggle>
+    <mat-icon class="icona" (click)="drawer.toggle()">menu</mat-icon><span>UnderControl</span>
+
+
+<div class="toggle">
+    <mat-slide-toggle (click)="toggleDarkMode()" [(ngModel)]="isDarkMode"></mat-slide-toggle>
+</div>
 </mat-toolbar>
 
 <!-- =====================  SIDEBAR  ====================== -->
