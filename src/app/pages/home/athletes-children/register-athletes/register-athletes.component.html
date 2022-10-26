@@ -5,7 +5,7 @@
 
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput  type="text" ngModel required name="name"  placeholder="Ex. Mario" >
+        <input matInput  type="text" required ngModel  name="name"  placeholder="Ex. Mario" >
       </mat-form-field>
 
       <mat-form-field class="example-full-width" appearance="outline">
@@ -65,7 +65,7 @@
 
 
 <div *ngIf="bool==true">
-<h2 mat-dialog-title>Update User</h2>
+<h2 mat-dialog-title>Update Athlete</h2>
 <form class="example-form"  #f="ngForm"  (ngSubmit)="update(data.id)" >
 <mat-dialog-content class="mat-typography">
 
@@ -101,7 +101,7 @@
     <mat-label>Fiscal Code</mat-label>
     <input matInput  [(ngModel)]="data.fiscalCode" required name="fiscalCode" maxlength="16" minlength="16" placeholder="Ex. GTRQUE66D11V333V"
                                                     style="text-transform: uppercase;"
-                                                    onkeyup="this.value = this.value.toUpperCase()">>
+                                                    onkeyup="this.value = this.value.toUpperCase()">
   </mat-form-field>
 
   <mat-form-field class="example-full-width" appearance="outline">

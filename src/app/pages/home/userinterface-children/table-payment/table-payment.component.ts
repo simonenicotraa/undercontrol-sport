@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/pages/auth/auth.service';
 import { AbstractServiceService } from '../../abstract-service.service';
 import { ModalAddPaymentComponent } from '../../athletes-children/modal-add-payment/modal-add-payment.component';
+import { ModalViewAllPaymentComponent } from '../../athletes-children/modal-view-all-payment/modal-view-all-payment.component';
 import { Iatletes } from '../../interfaces/iatletes';
 import { Ipayment } from '../../interfaces/ipayment';
 
@@ -53,7 +54,7 @@ export class TablePaymentComponent implements OnInit {
         this.athletesPayments = resp.filter( /* athlete=>athlete.listPayments!.length !=0 && athlete.listPayments![athlete.listPayments!.length-1].paymentStatus== false) */
            athlete =>{
             if(athlete.listPayments!.length ==0){
-            return false
+            return athlete.listPayments!.length==0
           }else{
             return athlete.listPayments![athlete.listPayments!.length-1].paymentStatus===false
           }
@@ -98,5 +99,37 @@ export class TablePaymentComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
 
+  }
+   /* apertura modal per aggiungere pagamento */
+  openDialogPayment(id: number) {
+    let obj = this.athletesPayments.filter((user) => user.id === id);
+    let u = obj[0];
+    let dialogRef = this.dialog.open(ModalAddPaymentComponent, {
+      data: {
+        id: u.id,
+      },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getAllAthletes()
+      this.getAllPayments();
+    });
+  }
+
+   /* apertura modal per vedere tutti i pagamenti di uno user */
+   openDialogViewAllPayement(id: number) {
+    console.log(id);
+    let obj = this.athletesPayments.filter((user) => user.id === id);
+    let u = obj[0];
+    console.log(u.listPayments);
+    let dialogRef = this.dialog.open(ModalViewAllPaymentComponent, {
+      data: {
+        id: id,
+        list: u.listPayments,
+      },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getAllAthletes()
+      this.getAllPayments();
+    });
   }
 }

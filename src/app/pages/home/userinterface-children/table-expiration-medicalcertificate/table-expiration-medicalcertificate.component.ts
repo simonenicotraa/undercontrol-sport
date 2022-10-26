@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/pages/auth/auth.service';
 import { AbstractServiceService } from '../../abstract-service.service';
 import { ModalAddCertificateComponent } from '../../athletes-children/modal-add-certificate/modal-add-certificate.component';
+import { ModalViewAllCertificateComponent } from '../../athletes-children/modal-view-all-certificate/modal-view-all-certificate.component';
 import { Iatletes } from '../../interfaces/iatletes';
 import { Imedicalcertificates } from '../../interfaces/imedicalcertificates';
 
@@ -53,7 +54,7 @@ export class TableExpirationMedicalcertificateComponent implements OnInit {
         this.athletesCertificates = resp.filter( athlete =>{
           if(athlete.listCertificates!.length ==0){
             //metto questa condizione per non far spuntare errore
-          return false
+          return athlete.listCertificates!.length==0
         }else{
           //filtro l'array prendendo tutti i certificati non validi
           return athlete.listCertificates![athlete.listCertificates!.length-1].validation == false
@@ -99,4 +100,32 @@ export class TableExpirationMedicalcertificateComponent implements OnInit {
        this.authService.reloadRoute()
       });
     }
+      /* apertura modal per vedere tutti i certificati */
+    openDialogViewAllCertificate(id: number) {
+      let obj = this.athletesCertificates.filter((user) => user.id === id);
+      let u = obj[0];
+      let dialogRef = this.dialog.open(ModalViewAllCertificateComponent, {
+        data: {
+          id: id,
+          list: u.listCertificates,
+        },
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        console.log(`Dialog result: ${result}`);
+      });
+    }
+
+      /* apertura modal per aggiungere certificati */
+  openDialogCertificate(id: number) {
+    let obj = this.athletesCertificates.filter((user) => user.id === id);
+    let u = obj[0];
+    let dialogRef = this.dialog.open(ModalAddCertificateComponent, {
+      data: {
+        id: u.id,
+      },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }

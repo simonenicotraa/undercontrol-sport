@@ -2,6 +2,7 @@ import { Component,Inject, OnInit,ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AuthService } from 'src/app/pages/auth/auth.service';
+import { IAuthData } from 'src/app/pages/auth/interfaces/iauth-data';
 import { AbstractServiceService } from '../../abstract-service.service';
 
 @Component({
@@ -26,15 +27,6 @@ export class ModalUpdateCredentialComponent implements OnInit {
   { }
 
   ngOnInit(): void {
-  }
-
-  onCheckboxChange() {
-    if (this.isDisabled = true) {
-      this.isDisabled = false
-    }
-    else if(this.isDisabled = false) {
-      this.isDisabled = true
-    }
   }
 
   closeDialog(){

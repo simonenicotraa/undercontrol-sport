@@ -14,6 +14,7 @@ import { RegisterAdminComponent } from '../register-admin/register-admin.compone
 import { IAuthData } from 'src/app/pages/auth/interfaces/iauth-data';
 import { IUsers } from '../../interfaces/iusers';
 import { AuthService } from 'src/app/pages/auth/auth.service';
+import { ModalUpdateCredentialComponent } from '../../userprofile-children/modal-update-credential/modal-update-credential.component';
 @Component({
   selector: 'app-table-users',
   templateUrl: './table-users.component.html',
@@ -129,5 +130,25 @@ uso il filter di un array perchè il getById da come oggetto undefined
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  openDialogUpdateCredential(id: number){
+    let obj = this.utenti.filter((user) => user.id === id);
+  JSON.stringify(obj).toString;
+  //mi restituisce un array di un solo oggetto
+  /* console.log(obj[0]); */
+  //seleziono oggetto dentro array
+  let u =obj[0];
+  //passo i dati al register.user.component.ts
+  let dialogRef = this.dialog.open(ModalUpdateCredentialComponent, {
+    data: {
+      id: u.id,
+      password: u.password,
+      username: u.username,
+    },
+  });
+  dialogRef.afterClosed().subscribe((result) => {
+    console.log(`Dialog result: ${result}`);
+  });
   }
 }

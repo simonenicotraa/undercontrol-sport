@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/pages/auth/auth.service';
 import { AbstractServiceService } from '../../abstract-service.service';
 
@@ -14,8 +15,10 @@ export class RegisterCoachesComponent implements OnInit {
   error=undefined
   bool :boolean = false;
   society:String | null =this.authService.getSociety()
-
+ /* variabile durata snackBar */
+ durationInSeconds = 4;
   constructor(
+    private _snackBar: MatSnackBar,
     private abstractService: AbstractServiceService,
     private authService: AuthService,
     public dialogRef: MatDialogRef<RegisterCoachesComponent>,
@@ -47,19 +50,26 @@ export class RegisterCoachesComponent implements OnInit {
   closeDialog(){
     this.dialogRef.close();
   }
-
+  openSnackBar(stringa:string) {
+    this._snackBar.open(stringa, 'Close',{
+      horizontalPosition: 'center',
+      verticalPosition:'top',
+      duration: this.durationInSeconds * 1000
+    }
+    )
+  }
   save() {
     console.log(this.form.value)
         this.abstractService.insertCoach(this.form.value).subscribe(
       (resp) => {
         console.log(resp);
         this.error = undefined;
+        this.openSnackBar("Coach Saved")
         this.closeDialog()
-       this.authService.reloadRoute()
       },
       (err) => {
         console.log(err.error);
-        this.error = err.error;
+        this.error = err.error.message;
       }
     );
   }
@@ -69,7 +79,7 @@ export class RegisterCoachesComponent implements OnInit {
         console.log(resp);
         this.error = undefined;
         this.closeDialog();
-        this.authService.reloadRoute()
+        this.openSnackBar("Coach Updated")
       }, (err)=> {
         console.log(err.error);
         this.error = err.error;

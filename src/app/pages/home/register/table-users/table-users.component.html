@@ -56,6 +56,7 @@
             matTooltip="Update"
             matTooltipPosition="below" *ngIf="element.roles[0].roleName=== 'ROLE_ADMIN'" color="warn"  (click)="openDialogAdmin(element.id)"><mat-icon>edit</mat-icon></button>
             <button mat-mini-fab *ngIf="element.roles[0].roleName=== 'ROLE_USER'"   (click)="openDialogUser(element.id)"><mat-icon>edit</mat-icon></button>
+            <button mat-mini-fab *ngIf="userLog.roles[0]=='ROLE_DEVELOPER'"   (click)="openDialogUpdateCredential(element.id)"><mat-icon>edit</mat-icon></button>
           </div>
 
         </div>

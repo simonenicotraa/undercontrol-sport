@@ -5,13 +5,12 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from 'src/app/pages/auth/auth.service';
 import { AbstractServiceService } from '../../abstract-service.service';
-import { IAthlCoach } from '../../interfaces/iathl-coach';
 import { Iatletes } from '../../interfaces/iatletes';
 import { Imedicalcertificates } from '../../interfaces/imedicalcertificates';
 import { Ipayment } from '../../interfaces/ipayment';
@@ -45,7 +44,8 @@ export class TableAthletesComponent implements OnInit {
   certificates: Imedicalcertificates[] = [];
    /* variabile durata snackBar */
    durationInSeconds = 4;
-  constructor(
+
+   constructor(
               private _snackBar: MatSnackBar,
               private abstractService: AbstractServiceService,
               public dialog: MatDialog,
@@ -57,12 +57,16 @@ export class TableAthletesComponent implements OnInit {
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: any | null;
 
-  ngOnInit(): void {
+  /* per costruzione della tabella. Settaggio dell'header della tab */
+   columnsToDisplay2: string[] = ['name', 'surname', 'fiscalCode','situa'];
+   columnsToDisplayWithExpand2 = [...this.columnsToDisplay2, 'expand'];
 
+  ngOnInit(): void {
     this.getAllAthletes();
     this.getAllPayments();
     this.getAllMedicalCertificates();
   }
+
   openSnackBar(stringa:string) {
     this._snackBar.open(stringa, 'Close',{
       horizontalPosition: 'center',
@@ -142,7 +146,7 @@ export class TableAthletesComponent implements OnInit {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      this.getAllAthletes();
     });
   }
 
@@ -156,7 +160,7 @@ export class TableAthletesComponent implements OnInit {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      this.getAllAthletes();
     });
   }
   /* apertura modal per modificare e aggiornare Certificato */
@@ -173,7 +177,7 @@ export class TableAthletesComponent implements OnInit {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      this.getAllAthletes();
     });
   }
   /* apertura modal per vedere tutti i certificati */
@@ -188,7 +192,7 @@ export class TableAthletesComponent implements OnInit {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      this.getAllAthletes();
     });
   }
 
@@ -202,7 +206,7 @@ export class TableAthletesComponent implements OnInit {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      this.getAllAthletes();
     });
   }
 
@@ -220,7 +224,8 @@ export class TableAthletesComponent implements OnInit {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.authService.reloadRoute();
+      this.getAllAthletes();
+      this.getAllPayments();
     });
   }
   /* apertura modal per vedere tutti i pagamenti di uno user */
@@ -236,7 +241,8 @@ export class TableAthletesComponent implements OnInit {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      this.getAllAthletes();
+      this.getAllPayments();
     });
   }
 }

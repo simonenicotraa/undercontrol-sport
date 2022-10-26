@@ -98,8 +98,7 @@ export class TableCoachesComponent implements OnInit {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.openSnackBar("Coach Updated")
-      this.authService.reloadRoute()
+      this.getAllCoaches()
     });
   }
   openSnackBar(stringa:string) {
