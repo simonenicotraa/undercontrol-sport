@@ -48,7 +48,7 @@
             <p> Email: {{element.email}} </p>
             <p> Ruolo: {{element.roles[0].roleName}} </p>
           </div>
-          <div *ngIf="userLog.roles[0]==='ROLE_ADMIN'">
+          <div *ngIf="userLog.roles[0]==='ROLE_ADMIN' || userLog.roles[0]==='ROLE_DEVELOPER'">
             <button mat-mini-fab
             matTooltip="Delete"
             matTooltipPosition="below" color="warn"  (click)="deleteUser(element.id)"><mat-icon>delete</mat-icon></button>

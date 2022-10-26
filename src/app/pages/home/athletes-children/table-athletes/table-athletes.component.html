@@ -53,21 +53,28 @@
             <p> Fiscal Code: {{element.fiscalCode}} </p>
             <p> Address: {{element.address}}, {{element.cap}}</p>
             <p *ngIf="element.listCertificates[0]!=undefined">
-              Medical Certificate:<br>
-              expirationDate:{{element.listCertificates[element.listCertificates.length-1].expirationDate}}
+              Medical Certificate:
               <span class="valid" *ngIf="element.listCertificates[element.listCertificates.length-1].validation==true">
                   VALID
               </span>
               <span class="invalid" *ngIf="element.listCertificates[element.listCertificates.length-1].validation==false">
                   INVALID
-              </span>
+              </span><br>
+              expirationDate:{{element.listCertificates[element.listCertificates.length-1].expirationDate}}
+
             </p>
 
             <p *ngIf="element.listPayments[0]!=undefined">
-                Payment:<br>
+                Payment:
+                   <span class="valid" *ngIf="element.listPayments[element.listPayments.length-1].paymentStatus==true">
+                  PAYED
+                  </span>
+                  <span class="invalid" *ngIf="element.listPayments[element.listPayments.length-1].paymentStatus==false">
+                   NOT PAYED
+                  </span><br>
                  AMOUNT --> {{element.listPayments[element.listPayments.length-1].amount}}  <br>
                  PAYED --> {{element.listPayments[element.listPayments.length-1].payed}}<br>
-                 {{element.listPayments[element.listPayments.length-1].paymentStatus}} <br>
+
                  <mat-progress-bar mode="determinate"
                  value="{{element.listPayments[element.listPayments.length-1].payed*100/element.listPayments[element.listPayments.length-1].amount}}"></mat-progress-bar>
 

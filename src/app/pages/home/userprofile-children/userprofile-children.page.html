@@ -1,0 +1,35 @@
+  <!-- metto ngIf sennò mi da errore in console.
+    legge prima html e poi dopo esegue metodi e quindi non trova proprieta-->
+
+    <mat-card class="example-card">
+      <mat-card-title-group>
+        <mat-card-title *ngIf="utLoggato!=null">Your Profile  #{{utLoggato.id}}</mat-card-title>
+
+        <!-- <img mat-card-lg-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" > -->
+      </mat-card-title-group>
+      <mat-card-content *ngIf="utLoggato!=null">
+        <p>Name:  <span><strong>{{utLoggato.name}}</strong></span></p>
+        <p>Surname: <span><strong>{{utLoggato.surname}}</strong></span></p>
+        <p>Email: <span><strong>{{utLoggato.email}}</strong></span></p>
+        <p>Username: <span><strong>{{utLoggato.username}}</strong></span></p>
+        <p>Role: <span><strong>{{utLoggato.roles[0].roleName}}</strong></span></p>
+        <br>
+  <button mat-raised-button
+          matTooltip="Update Profile Informations"
+          matTooltipPosition="below"
+          *ngIf="utLoggato.roles[0].roleName=== 'ROLE_ADMIN' || utLoggato.roles[0].roleName=== 'ROLE_DEVELOPER'" color="accent"  (click)="openDialogAdmin(utLoggato.id)">Update Profile Informations<mat-icon>edit</mat-icon>
+  </button>
+  <button mat-raised-button
+          matTooltip="Update Profile Informations"
+          matTooltipPosition="below"
+          *ngIf="utLoggato.roles[0].roleName=== 'ROLE_USER'" color="accent"  (click)="openDialogUser(utLoggato.id)">Update Profile Informations<mat-icon>edit</mat-icon>
+  </button>
+  <button mat-raised-button
+          matTooltip="Update Profile Credential"
+          matTooltipPosition="below"  color="warn" (click)="openDialogUpdateCredential(utLoggato.id)">Update Profile Credential<mat-icon> vpn_key</mat-icon>
+  </button>
+      </mat-card-content>
+    </mat-card>
+<div *ngIf="utLoggato!=null">
+
+</div>

@@ -68,6 +68,7 @@ this.abstractService.updatePayment(id,this.form.value).subscribe(
     console.log(resp);
     this.error = undefined;
     this.closeDialog();
+    this.authService.reloadRoute()
     },
     (err) => {
       console.log(err.error);

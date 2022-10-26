@@ -61,6 +61,7 @@ export class AuthService {
     console.log('Logout')
     this.authSubject.next(null);
     localStorage.removeItem('isAuthenticated');
+    this.reloadRoute()
     this.router.navigate(['/login']);
   }
 

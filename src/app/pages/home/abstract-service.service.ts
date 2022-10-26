@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment.prod';
 import { IAuthData } from '../auth/interfaces/iauth-data';
 import { ISignupData } from '../auth/interfaces/isignup-data';
+import { IUserInfo } from '../auth/interfaces/iuser-info';
 import { IAthlCoach } from './interfaces/iathl-coach';
 import { Iatletes } from './interfaces/iatletes';
 import { Imedicalcertificates } from './interfaces/imedicalcertificates';
@@ -48,9 +49,13 @@ durationInSeconds = 4;
     return this.http.delete(environment.APIEndpoint + '/users/' + id,this.options);
   }
   /*UPDATE -- modificare atleti nel db */
-  updateUser(id: number, obj: ISignupData) {
-    return this.http.put(environment.APIEndpoint + '/users/' + id, obj,this.options);
+  updateUserCredential(id: number, obj: ISignupData) {
+    return this.http.patch(environment.APIEndpoint + '/users/updateCredential/' + id, obj,this.options);
   }
+    /*UPDATE -- modificare atleti nel db */
+    updateUserInfo(id: number, obj: IUserInfo) {
+      return this.http.patch(environment.APIEndpoint + '/users/updateInfo/' + id, obj,this.options);
+    }
 
   signupAdmin(obj: ISignupData) {
     return this.http.post(environment.APIEndpoint+'/users/insertAdmin', obj,this.options);

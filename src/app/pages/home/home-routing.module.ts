@@ -6,6 +6,7 @@ import { HomeComponent } from './home.component';
 import { RegisterChildrenPage } from './register/register.children-page';
 import { TeamsChildrenPage } from './teams-children/teams-children.page';
 import { UserinterfaceChildrenPage } from './userinterface-children/userinterface-children.page';
+import { UserprofileChildrenPage } from './userprofile-children/userprofile-children.page';
 
 const routes: Routes = [
   { path: '', component: HomeComponent ,
@@ -15,6 +16,7 @@ const routes: Routes = [
     {path:'athletes', component: AthletesChildrenPage   },
     {path:'coaches', component: CoachesChildrenPage    },
     {path:'teams', component: TeamsChildrenPage   },
+    {path:'profile', component: UserprofileChildrenPage   },
 
 
 

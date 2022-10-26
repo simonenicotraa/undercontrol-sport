@@ -23,7 +23,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { RegisterUserComponent } from './register/register-user/register-user.component';
 import { RegisterAdminComponent } from './register/register-admin/register-admin.component';
@@ -46,9 +46,11 @@ import { ModalViewAllPaymentComponent } from './athletes-children/modal-view-all
 import { ModalViewAllCertificateComponent } from './athletes-children/modal-view-all-certificate/modal-view-all-certificate.component';
 import { TableExpirationMedicalcertificateComponent } from './userinterface-children/table-expiration-medicalcertificate/table-expiration-medicalcertificate.component';
 import { TablePaymentComponent } from './userinterface-children/table-payment/table-payment.component';
+import { UserprofileChildrenPage } from './userprofile-children/userprofile-children.page';
+import { ModalUpdateCredentialComponent } from './userprofile-children/modal-update-credential/modal-update-credential.component';
 
 @NgModule({
-  declarations: [HomeComponent, RegisterChildrenPage, RegisterUserComponent, RegisterAdminComponent, UserinterfaceChildrenPage, AthletesChildrenPage, CoachesChildrenPage, TeamsChildrenPage, TableUsersComponent, RegisterAthletesComponent, RegisterCoachesComponent, TableAthletesComponent, TableCoachesComponent, ModalAddAthletesComponent, ModalAddCoachesComponent, ModalNewTeamComponent, ModalAddCertificateComponent, ModalAddPaymentComponent, ModalViewAllPaymentComponent, ModalViewAllCertificateComponent, TableExpirationMedicalcertificateComponent, TablePaymentComponent],
+  declarations: [HomeComponent, RegisterChildrenPage, RegisterUserComponent, RegisterAdminComponent, UserinterfaceChildrenPage, AthletesChildrenPage, CoachesChildrenPage, TeamsChildrenPage, TableUsersComponent, RegisterAthletesComponent, RegisterCoachesComponent, TableAthletesComponent, TableCoachesComponent, ModalAddAthletesComponent, ModalAddCoachesComponent, ModalNewTeamComponent, ModalAddCertificateComponent, ModalAddPaymentComponent, ModalViewAllPaymentComponent, ModalViewAllCertificateComponent, TableExpirationMedicalcertificateComponent, TablePaymentComponent, UserprofileChildrenPage, ModalUpdateCredentialComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -72,7 +74,7 @@ import { TablePaymentComponent } from './userinterface-children/table-payment/ta
     MatSnackBarModule,
     MatProgressBarModule,
     MatSlideToggleModule,
-    MatTooltipModule
+    MatTooltipModule,MatCheckboxModule
 
   ],
 })

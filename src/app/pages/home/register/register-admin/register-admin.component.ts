@@ -18,7 +18,6 @@ export class RegisterAdminComponent implements OnInit {
   constructor(
    private authService: AuthService,
     private abstractService: AbstractServiceService,
-     private router: Router,
      public dialogRef: MatDialogRef<RegisterAdminComponent>,
      /* prendo i dati passati  per riportarli nell'input scrivo [(ngModel)]="data.name" VEDI HTML*/
      @Inject(MAT_DIALOG_DATA) public data: {
@@ -56,13 +55,13 @@ export class RegisterAdminComponent implements OnInit {
       },
       (err) => {
         console.log(err.error);
-        this.error = err.error;
+        this.error = err.error.message;
       }
     );
   }
 
   update(id: number){
-    this.abstractService.updateUser(id, this.form.value).subscribe(
+    this.abstractService.updateUserInfo(id, this.form.value).subscribe(
       (resp) => {
         console.log(resp);
         this.error = undefined;
@@ -70,7 +69,7 @@ export class RegisterAdminComponent implements OnInit {
         this.authService.reloadRoute()
       }, (err)=> {
         console.log(err.error);
-        this.error = err.error;
+        this.error = err.error.message;
       }
     )
   }

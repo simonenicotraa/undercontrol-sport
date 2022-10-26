@@ -14,7 +14,8 @@ export class LoginPage implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void {
+   }
 
   onSubmit() {
  //   console.log(this.form.value);

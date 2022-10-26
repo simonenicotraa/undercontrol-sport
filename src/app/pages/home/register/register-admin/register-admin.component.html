@@ -6,27 +6,27 @@
 
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput  ngModel name="name" placeholder="Ex. Mario" >
+        <input matInput type="text" ngModel required name="name" placeholder="Ex. Mario" >
       </mat-form-field>
 
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Surname</mat-label>
-        <input matInput  ngModel name="surname" placeholder="Ex. Rossi">
+        <input matInput type="text" ngModel required name="surname" placeholder="Ex. Rossi">
       </mat-form-field>
 
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Email</mat-label>
-        <input matInput type="email"  ngModel name="email" placeholder="Ex. m.r@example.com" ><!-- formControlName="email -->
+        <input matInput type="email"  ngModel required name="email" placeholder="Ex. m.r@example.com" ><!-- formControlName="email -->
       </mat-form-field>
 
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Username</mat-label>
-        <input matInput  ngModel name="username" placeholder="Ex. MarRossi">
+        <input matInput type="text" ngModel required name="username" placeholder="Ex. MarRossi">
       </mat-form-field>
 
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Password</mat-label>
-        <input type="password" matInput ngModel name="password" placeholder="Ex. abc123Sushi">
+        <input type="password" matInput ngModel  required name="password" placeholder="Ex. abc123Sushi">
       </mat-form-field>
 
       <mat-form-field class="example-full-width" appearance="outline">
@@ -53,28 +53,28 @@
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Name</mat-label>
-      <input matInput  [(ngModel)]="data.name" name="name" placeholder="Ex. Mario" >
+      <input matInput required [(ngModel)]="data.name" name="name" placeholder="Ex. Mario" >
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Surname</mat-label>
-      <input matInput  [(ngModel)]="data.surname" name="surname" placeholder="Ex. Rossi">
+      <input matInput required [(ngModel)]="data.surname" name="surname" placeholder="Ex. Rossi">
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Email</mat-label>
-      <input matInput type="email"  [(ngModel)]="data.email" name="email" placeholder="Ex. m.r@example.com" ><!-- formControlName="email -->
+      <input matInput type="email" required [(ngModel)]="data.email" name="email" placeholder="Ex. m.r@example.com" ><!-- formControlName="email -->
     </mat-form-field>
 
-    <mat-form-field class="example-full-width" appearance="outline">
+<!--     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Username</mat-label>
-      <input matInput  [(ngModel)]="data.username" disabled name="username" placeholder="Ex. MarRossi">
+      <input matInput  [(ngModel)]="data.username" name="username" placeholder="Ex. MarRossi">
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Password</mat-label>
       <input type="password" matInput ngModel name="password" placeholder="Ex. abc123Sushi">
-    </mat-form-field>
+    </mat-form-field> -->
 
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Society</mat-label>

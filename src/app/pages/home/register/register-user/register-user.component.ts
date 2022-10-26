@@ -71,13 +71,13 @@ export class RegisterUserComponent implements OnInit {
       },
       (err) => {
         console.log(err.error);
-        this.error = err.error;
+        this.error = err.error.message;
       }
     );
   }
 
   update(id: number){
-    this.abstractService.updateUser(id, this.form.value).subscribe(
+    this.abstractService.updateUserInfo(id, this.form.value).subscribe(
       (resp) => {
         console.log(resp);
         this.error = undefined;
@@ -85,7 +85,7 @@ export class RegisterUserComponent implements OnInit {
         this.authService.reloadRoute()
       }, (err)=> {
         console.log(err.error);
-        this.error = err.error;
+        this.error = err.error.message;
       }
     )
   }
