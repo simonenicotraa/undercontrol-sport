@@ -1,0 +1,18 @@
+<div class="balance">
+  <div>
+  <h3>Total to pay: {{totalAmount}}    <span>100%</span></h3>
+  <h3>Total Payed: {{totalPayed}}      <span>{{perc.toFixed()}}%</span></h3>
+</div>
+<div>
+  <span class="spinner-container">
+  <div class="spinner-background">{{perc.toFixed()}}%</div>
+  <mat-progress-spinner #spinner
+      color="accent"
+      mode="determinate"
+      value="{{perc}}">
+  </mat-progress-spinner>
+</span>
+</div>
+</div>
+
+

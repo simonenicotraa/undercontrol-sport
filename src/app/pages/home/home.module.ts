@@ -24,6 +24,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSortModule} from '@angular/material/sort';
 
 import { RegisterUserComponent } from './register/register-user/register-user.component';
 import { RegisterAdminComponent } from './register/register-admin/register-admin.component';
@@ -48,9 +50,13 @@ import { TableExpirationMedicalcertificateComponent } from './userinterface-chil
 import { TablePaymentComponent } from './userinterface-children/table-payment/table-payment.component';
 import { UserprofileChildrenPage } from './userprofile-children/userprofile-children.page';
 import { ModalUpdateCredentialComponent } from './userprofile-children/modal-update-credential/modal-update-credential.component';
+import { FinanceChildrenPage } from './finance-children/finance-children.page';
+import { TableFinanceComponent } from './finance-children/table-finance/table-finance.component';
+import { ViewDetailComponent } from './finance-children/view-detail/view-detail.component';
+import { BalanceComponent } from './finance-children/balance/balance.component';
 
 @NgModule({
-  declarations: [HomeComponent, RegisterChildrenPage, RegisterUserComponent, RegisterAdminComponent, UserinterfaceChildrenPage, AthletesChildrenPage, CoachesChildrenPage, TeamsChildrenPage, TableUsersComponent, RegisterAthletesComponent, RegisterCoachesComponent, TableAthletesComponent, TableCoachesComponent, ModalAddAthletesComponent, ModalAddCoachesComponent, ModalNewTeamComponent, ModalAddCertificateComponent, ModalAddPaymentComponent, ModalViewAllPaymentComponent, ModalViewAllCertificateComponent, TableExpirationMedicalcertificateComponent, TablePaymentComponent, UserprofileChildrenPage, ModalUpdateCredentialComponent],
+  declarations: [HomeComponent, RegisterChildrenPage, RegisterUserComponent, RegisterAdminComponent, UserinterfaceChildrenPage, AthletesChildrenPage, CoachesChildrenPage, TeamsChildrenPage, TableUsersComponent, RegisterAthletesComponent, RegisterCoachesComponent, TableAthletesComponent, TableCoachesComponent, ModalAddAthletesComponent, ModalAddCoachesComponent, ModalNewTeamComponent, ModalAddCertificateComponent, ModalAddPaymentComponent, ModalViewAllPaymentComponent, ModalViewAllCertificateComponent, TableExpirationMedicalcertificateComponent, TablePaymentComponent, UserprofileChildrenPage, ModalUpdateCredentialComponent, FinanceChildrenPage, TableFinanceComponent, ViewDetailComponent, BalanceComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -74,8 +80,10 @@ import { ModalUpdateCredentialComponent } from './userprofile-children/modal-upd
     MatSnackBarModule,
     MatProgressBarModule,
     MatSlideToggleModule,
-    MatTooltipModule,MatCheckboxModule
-
+    MatTooltipModule,
+    MatCheckboxModule,
+    MatProgressSpinnerModule,
+    MatSortModule
   ],
 })
 export class HomeModule {}

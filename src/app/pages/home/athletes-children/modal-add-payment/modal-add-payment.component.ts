@@ -14,7 +14,7 @@ export class ModalAddPaymentComponent implements OnInit {
   bool :boolean = false;
   @ViewChild('f') form!: NgForm;
   error=undefined
-
+  society:String | null =this.authService.getSociety()
 
   constructor(
               private abstractService: AbstractServiceService,
@@ -61,6 +61,7 @@ export class ModalAddPaymentComponent implements OnInit {
     }
   );
   }
+
   updatePayment(id:number){
 this.abstractService.updatePayment(id,this.form.value).subscribe(
   (resp) => {

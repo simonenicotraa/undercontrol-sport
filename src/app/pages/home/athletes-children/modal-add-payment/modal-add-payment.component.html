@@ -12,6 +12,10 @@
     <span matSuffix>.00</span>
   </mat-form-field>
 
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Society</mat-label>
+    <input matInput  [(ngModel)]="society" readonly="readonly" name="society" placeholder="Ex. 12345">
+  </mat-form-field>
   <button type="submit">Add payment</button>
 
 </form>
@@ -36,6 +40,11 @@
     <input matInput [(ngModel)]="data.payed" type="number" name="payed" class="example-right-align" placeholder="0">
     <span matPrefix>€&nbsp;</span>
     <span matSuffix>.00</span>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Society</mat-label>
+    <input matInput  [(ngModel)]="society" readonly="readonly" name="society" placeholder="Ex. 12345">
   </mat-form-field>
 
   <button type="submit">Add payment</button>

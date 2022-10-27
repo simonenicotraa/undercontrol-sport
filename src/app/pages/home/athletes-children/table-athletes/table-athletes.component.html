@@ -219,8 +219,15 @@
                  AMOUNT --> {{element.listPayments[element.listPayments.length-1].amount}}  <br>
                  PAYED --> {{element.listPayments[element.listPayments.length-1].payed}}<br>
 
-                 <mat-progress-bar mode="determinate"
-                 value="{{element.listPayments[element.listPayments.length-1].payed*100/element.listPayments[element.listPayments.length-1].amount}}"></mat-progress-bar>
+                <br>
+                <span class="spinner-container">
+                  <div class="spinner-background">{{element.listPayments[element.listPayments.length-1].payed*100/element.listPayments[element.listPayments.length-1].amount}}%</div>
+                  <mat-progress-spinner #spinner
+                      color="accent"
+                      mode="determinate"
+                      value="{{element.listPayments[element.listPayments.length-1].payed*100/element.listPayments[element.listPayments.length-1].amount}}">
+                  </mat-progress-spinner>
+                </span>
 
             </p>
 

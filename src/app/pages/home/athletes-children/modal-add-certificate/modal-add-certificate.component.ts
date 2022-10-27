@@ -2,7 +2,6 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Data } from '@angular/router';
 import { AuthService } from 'src/app/pages/auth/auth.service';
 import { AbstractServiceService } from '../../abstract-service.service';
 

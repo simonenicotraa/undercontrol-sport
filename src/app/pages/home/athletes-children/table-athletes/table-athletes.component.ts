@@ -207,6 +207,7 @@ export class TableAthletesComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result) => {
       this.getAllAthletes();
+      this.authService.reloadRoute()
     });
   }
 
@@ -224,8 +225,7 @@ export class TableAthletesComponent implements OnInit {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.getAllAthletes();
-      this.getAllPayments();
+      this.authService.reloadRoute()
     });
   }
   /* apertura modal per vedere tutti i pagamenti di uno user */
