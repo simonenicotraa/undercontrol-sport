@@ -5,8 +5,11 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from 'src/app/pages/auth/auth.service';
 import { AbstractServiceService } from '../../abstract-service.service';
 import { ModalAddCertificateComponent } from '../../athletes-children/modal-add-certificate/modal-add-certificate.component';
@@ -19,13 +22,10 @@ import { Imedicalcertificates } from '../../interfaces/imedicalcertificates';
   templateUrl: './table-expiration-medicalcertificate.component.html',
   styleUrls: ['./table-expiration-medicalcertificate.component.scss'],
   animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0' })),
-      state('expanded', style({ height: '*' })),
-      transition(
-        'expanded <=> collapsed',
-        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
-      ),
+    trigger('detailExpand', [ state('collapsed, void', style({ height: '0px' })),
+     state('expanded', style({ height: '*' })),
+     transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+     transition('expanded <=> void', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)'))
     ]),
   ],
 })
@@ -35,10 +35,15 @@ export class TableExpirationMedicalcertificateComponent implements OnInit {
   error=undefined
 
    /* per costruzione della tabella. Settaggio dell'header della tab */
+   dataSource= new MatTableDataSource(this.athletesCertificates);
    columnsToDisplay: string[] = ['name', 'medicalCert', 'fiscalCode'];
    /* settaggio per espansione riga Angular material */
    columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
    expandedElement: any | null;
+  /* per sorting */
+   @ViewChild(MatSort) matSort!: MatSort;
+   /* per paginazione */
+   @ViewChild('paginator') paginator!: MatPaginator;
 
   constructor(private abstractService: AbstractServiceService,
               public dialog: MatDialog,
@@ -47,11 +52,17 @@ export class TableExpirationMedicalcertificateComponent implements OnInit {
   ngOnInit(): void {
     this.getAllAthletes()
     this. getAllMedicalCertificates()
+
   }
+
+
+
+
   getAllAthletes() {
     this.abstractService.findAllAthletes().subscribe(
       (resp)=>{
-        this.athletesCertificates = resp.filter( athlete =>{
+        this.athletesCertificates = resp.filter(
+          athlete =>{
           if(athlete.listCertificates!.length ==0){
             //metto questa condizione per non far spuntare errore
           return athlete.listCertificates!.length==0
@@ -61,6 +72,10 @@ export class TableExpirationMedicalcertificateComponent implements OnInit {
         }
         }
       )
+      /* per settare il sorting e paginazione*/
+      this.dataSource = new MatTableDataSource(this.athletesCertificates);
+      this.dataSource.sort =this.matSort;
+      this.dataSource.paginator = this.paginator;
       },
       (err)=>{
         this.error= err.error;

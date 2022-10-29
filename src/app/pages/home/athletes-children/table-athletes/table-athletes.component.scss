@@ -1,5 +1,5 @@
 
-div{
+div, .pag{
   width: 85%;
   margin: 0 auto;
   table, mat-form-field{
@@ -8,12 +8,14 @@ div{
   }
 }
   @media only screen and (max-width: 601px) {
-    div{
-      width: 95%;
+    div, .pag{
+      width: 100%;
       margin: 0 auto;
+
       table, mat-form-field{
         width:100%;
         margin: 0 auto;
+        font-size: small;
       }
     }
     .example-element-diagram {

@@ -5,9 +5,11 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit, ViewChild, } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from 'src/app/pages/auth/auth.service';
 import { AbstractServiceService } from '../../abstract-service.service';
@@ -40,6 +42,19 @@ export class TableAthletesComponent implements OnInit {
   athletes: Iatletes[] = [];
   /* variabili per costruzione della tabella */
   dataSource = new MatTableDataSource(this.athletes);
+  /* per costruzione della tabella. Settaggio dell'header della tab */
+  columnsToDisplay: string[] = ['name', 'surname', 'fiscalCode'];
+  /* settaggio per espansione riga Angular material */
+  columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
+  expandedElement: any | null;
+  /* per sorting */
+  @ViewChild(MatSort) matSort!: MatSort;
+  /* per paginazione */
+  @ViewChild('paginator') paginator!: MatPaginator;
+
+  /* per costruzione della tabella. Settaggio dell'header della tab */
+   columnsToDisplay2: string[] = ['name', 'surname', 'fiscalCode','situa'];
+   columnsToDisplayWithExpand2 = [...this.columnsToDisplay2, 'expand'];
   error = undefined;
   certificates: Imedicalcertificates[] = [];
    /* variabile durata snackBar */
@@ -51,15 +66,7 @@ export class TableAthletesComponent implements OnInit {
               public dialog: MatDialog,
               private authService: AuthService,
               ) {}
-  /* per costruzione della tabella. Settaggio dell'header della tab */
-  columnsToDisplay: string[] = ['name', 'surname', 'fiscalCode'];
-  /* settaggio per espansione riga Angular material */
-  columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
-  expandedElement: any | null;
 
-  /* per costruzione della tabella. Settaggio dell'header della tab */
-   columnsToDisplay2: string[] = ['name', 'surname', 'fiscalCode','situa'];
-   columnsToDisplayWithExpand2 = [...this.columnsToDisplay2, 'expand'];
 
   ngOnInit(): void {
     this.getAllAthletes();
@@ -86,6 +93,8 @@ export class TableAthletesComponent implements OnInit {
       (resp) => {
         this.athletes = resp;
         this.dataSource = new MatTableDataSource(this.athletes);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort =this.matSort;
       },
       (err) => {
         console.log(err.error);

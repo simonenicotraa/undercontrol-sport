@@ -24,8 +24,10 @@ export class LoginPage implements OnInit {
       resp => {
         console.log(resp);
         this.error = undefined;
+
         //dopo il login passo alla pagina protetta dal guard HOME
         this.router.navigate(['home'])
+
       },
       err  => {
         console.log(err.error);

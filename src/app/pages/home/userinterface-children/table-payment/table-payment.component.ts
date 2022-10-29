@@ -5,8 +5,11 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from 'src/app/pages/auth/auth.service';
 import { AbstractServiceService } from '../../abstract-service.service';
 import { ModalAddPaymentComponent } from '../../athletes-children/modal-add-payment/modal-add-payment.component';
@@ -19,25 +22,29 @@ import { Ipayment } from '../../interfaces/ipayment';
   templateUrl: './table-payment.component.html',
   styleUrls: ['./table-payment.component.scss'],
   animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0' })),
-      state('expanded', style({ height: '*' })),
-      transition(
-        'expanded <=> collapsed',
-        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
-      ),
-    ]),
-  ],
+    trigger('detailExpand', [ state('collapsed, void', style({ height: '0px' })),
+  state('expanded', style({ height: '*' })),
+  transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+  transition('expanded <=> void', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)'))
+ ]),
+],
+
 })
 export class TablePaymentComponent implements OnInit {
   athletesPayments:Iatletes[]=[]
   error=undefined
   payments: Ipayment[] = [];
+
    /* per costruzione della tabella. Settaggio dell'header della tab */
+   dataSource= new MatTableDataSource(this.athletesPayments);
    columnsToDisplay: string[] = ['name', 'statusPayement', 'fiscalCode'];
    /* settaggio per espansione riga Angular material */
    columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
    expandedElement: any | null;
+   /* per sorting */
+   @ViewChild(MatSort) matSort!: MatSort;
+   /* per paginazione */
+   @ViewChild('paginator') paginator!: MatPaginator;
 
   constructor( private abstractService: AbstractServiceService,
                 public dialog: MatDialog,
@@ -46,6 +53,8 @@ export class TablePaymentComponent implements OnInit {
   ngOnInit(): void {
     this.getAllAthletes()
     this.getAllPayments();
+    this.dataSource = new MatTableDataSource(this.athletesPayments);
+    this.dataSource.sort =this.matSort;
   }
   getAllAthletes() {
     this.abstractService.findAllAthletes().subscribe(
@@ -53,14 +62,18 @@ export class TablePaymentComponent implements OnInit {
         console.log(resp)
         this.athletesPayments = resp.filter( /* athlete=>athlete.listPayments!.length !=0 && athlete.listPayments![athlete.listPayments!.length-1].paymentStatus== false) */
            athlete =>{
-            if(athlete.listPayments!.length ==0){
+          if(athlete.listPayments!.length ==0){
             return athlete.listPayments!.length==0
           }else{
             return athlete.listPayments![athlete.listPayments!.length-1].paymentStatus===false
           }
-
           }
         )
+        /* per settare il sorting */
+        this.dataSource = new MatTableDataSource(this.athletesPayments);
+        this.dataSource.sort =this.matSort;
+        this.dataSource.paginator = this.paginator;
+
        },
       (err)=>{
         this.error= err.error;
@@ -79,7 +92,6 @@ export class TablePaymentComponent implements OnInit {
       }
     );
   }
-
 
     /* apertura modal per modificare e aggiornare pagamento */
   openDialogPaymentUpdate(id: number) {

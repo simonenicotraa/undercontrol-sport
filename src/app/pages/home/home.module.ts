@@ -26,6 +26,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSortModule} from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { RegisterUserComponent } from './register/register-user/register-user.component';
 import { RegisterAdminComponent } from './register/register-admin/register-admin.component';
@@ -55,6 +56,7 @@ import { TableFinanceComponent } from './finance-children/table-finance/table-fi
 import { ViewDetailComponent } from './finance-children/view-detail/view-detail.component';
 import { BalanceComponent } from './finance-children/balance/balance.component';
 
+
 @NgModule({
   declarations: [HomeComponent, RegisterChildrenPage, RegisterUserComponent, RegisterAdminComponent, UserinterfaceChildrenPage, AthletesChildrenPage, CoachesChildrenPage, TeamsChildrenPage, TableUsersComponent, RegisterAthletesComponent, RegisterCoachesComponent, TableAthletesComponent, TableCoachesComponent, ModalAddAthletesComponent, ModalAddCoachesComponent, ModalNewTeamComponent, ModalAddCertificateComponent, ModalAddPaymentComponent, ModalViewAllPaymentComponent, ModalViewAllCertificateComponent, TableExpirationMedicalcertificateComponent, TablePaymentComponent, UserprofileChildrenPage, ModalUpdateCredentialComponent, FinanceChildrenPage, TableFinanceComponent, ViewDetailComponent, BalanceComponent],
   imports: [
@@ -83,7 +85,8 @@ import { BalanceComponent } from './finance-children/balance/balance.component';
     MatTooltipModule,
     MatCheckboxModule,
     MatProgressSpinnerModule,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule
   ],
 })
 export class HomeModule {}

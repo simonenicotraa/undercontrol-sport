@@ -6,9 +6,10 @@ import {
   trigger,
 } from '@angular/animations';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
-import { Component, OnInit,ViewChild,AfterViewInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSort, Sort } from '@angular/material/sort';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from 'src/app/pages/auth/auth.service';
 import { AbstractServiceService } from '../../abstract-service.service';
@@ -30,7 +31,7 @@ import { ViewDetailComponent } from '../view-detail/view-detail.component';
     ]),
   ],
 })
-export class TableFinanceComponent implements OnInit,AfterViewInit {
+export class TableFinanceComponent implements OnInit {
  /*  payments: Ipayment[] = []; */
  payments: any[] = [];
   athletes: Iatletes[] = [];
@@ -39,23 +40,18 @@ export class TableFinanceComponent implements OnInit,AfterViewInit {
   displayedColumns: string[] = ['id', 'progress', 'status','option'];
   dataSource= new MatTableDataSource(this.payments);
 
-  @ViewChild(MatSort)
-  sort!: MatSort;
+  @ViewChild('paginator') paginator!: MatPaginator;
+  @ViewChild(MatSort) matSort!: MatSort;
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-  }
+
 
   constructor(private abstractService: AbstractServiceService,
               private authService: AuthService,
               public dialog: MatDialog,
-              private _liveAnnouncer: LiveAnnouncer
+
               ) {
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(this.payments);
+
   }
-
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -75,8 +71,6 @@ export class TableFinanceComponent implements OnInit,AfterViewInit {
     this.abstractService.findAllAthletes().subscribe(
       (resp) => {
         this.athletes = resp;
-
-
       },
       (err) => {
         console.log(err.error);
@@ -87,11 +81,24 @@ export class TableFinanceComponent implements OnInit,AfterViewInit {
   getAllPayments() {
     return this.abstractService.getAllPayment().subscribe(
       (resp) => {
-        console.log(this.payments)
         this.error = undefined;
         this.payments=resp
+
         this.dataSource = new MatTableDataSource(this.payments);
-        console.log(this.payments)
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort =this.matSort;
+
+        /* vedi */
+        this.dataSource.sortingDataAccessor = (ele, prop) =>{
+         console.log(ele,prop)
+         if(prop=='progress'){
+          return (ele.payed*100/ele.amount).toFixed()
+         }
+         if(prop=='status'){
+          return ele.paymentStatus
+         }
+          return ele
+        }
       },
       (err) => {
         console.log(err.error);
@@ -117,6 +124,7 @@ export class TableFinanceComponent implements OnInit,AfterViewInit {
         fiscalCode: u.fiscalCode,
         address: u.address,
         cap: u.cap,
+        listPayments: u.listPayments,
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
@@ -125,15 +133,5 @@ export class TableFinanceComponent implements OnInit,AfterViewInit {
   }
 
 
-  announceSortChange(sortState: Sort) {
-    // This example uses English messages. If your application supports
-    // multiple language, you would internationalize these strings.
-    // Furthermore, you can customize the message to add additional
-    // details about the values being sorted.
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
-  }
+
 }
