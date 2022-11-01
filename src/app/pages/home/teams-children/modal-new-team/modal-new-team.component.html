@@ -1,12 +1,13 @@
 <form *ngIf="bool==false" class="example-form"  #f="ngForm"  (ngSubmit)="save()" >
+  <h2>Create new Team</h2>
   <mat-form-field appearance="fill">
     <mat-label>Name of team</mat-label>
-    <input matInput ngModel name="name" placeholder="es. U15 ">
+    <input matInput ngModel required name="name" placeholder="es. U15 ">
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Select</mat-label>
-    <mat-select ngModel [(value)]="selected" name="gender">
+    <mat-select ngModel required [(value)]="selected" name="gender">
       <mat-option  value="M">Male</mat-option>
       <mat-option  value="F">Female</mat-option>
     </mat-select>
@@ -14,27 +15,31 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Season</mat-label>
-    <input matInput ngModel name="season" placeholder="es. 22/23">
+    <input matInput ngModel required name="season" placeholder="es. 22/23">
   </mat-form-field>
 
-  <mat-form-field class="example-full-width" appearance="outline">
+  <mat-form-field class="example-full-width" class="team" appearance="outline">
     <mat-label>Society</mat-label>
     <input matInput [(ngModel)]="society" readonly="readonly" name="society" placeholder="Ex. 12345">
   </mat-form-field>
 
+  <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
+  <mat-dialog-actions align="end">
   <button mat-button type="submit" cdkFocusInitial> Save Team</button>
+  </mat-dialog-actions>
   </form>
 
 
   <form *ngIf="bool==true" class="example-form"  #f="ngForm"  (ngSubmit)=" updateTeam(data.id)" >
+    <h2>Update your Team</h2>
     <mat-form-field appearance="fill">
       <mat-label>Name of team</mat-label>
-      <input matInput [(ngModel)]="data.name" name="name" placeholder="es. U15 ">
+      <input matInput [(ngModel)]="data.name" required name="name" placeholder="es. U15 ">
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Gender</mat-label>
-      <mat-select [(ngModel)]="data.gender" name="gender">
+      <mat-select [(ngModel)]="data.gender" required name="gender">
         <mat-option  value="M">Male</mat-option>
         <mat-option  value="F">Female</mat-option>
       </mat-select>
@@ -42,13 +47,16 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Season</mat-label>
-      <input matInput [(ngModel)]="data.season" name="season" placeholder="es. 22/23">
+      <input matInput [(ngModel)]="data.season" required name="season" placeholder="es. 22/23">
     </mat-form-field>
 
-    <mat-form-field class="example-full-width" appearance="outline">
+    <mat-form-field class="example-full-width" class="team" appearance="outline">
       <mat-label>Society</mat-label>
       <input matInput [(ngModel)]="society" readonly="readonly" name="society" placeholder="Ex. 12345">
     </mat-form-field>
 
+    <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
+ <mat-dialog-actions align="end">
     <button mat-button type="submit" cdkFocusInitial> Save Team</button>
+  </mat-dialog-actions>
     </form>

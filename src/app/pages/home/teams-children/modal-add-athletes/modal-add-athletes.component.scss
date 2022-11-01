@@ -1,8 +1,9 @@
-div{
+div {
   width: 100%;
   margin: 0 auto;
-  table, mat-form-field{
-    width:100%;
+  table,
+  mat-form-field {
+    width: 100%;
     margin: 0 auto;
   }
 }
@@ -47,6 +48,54 @@ tr.example-element-row:not(.example-expanded-row):active {
 .example-element-description-attribution {
   opacity: 0.5;
 }
-.bottAggiungi{
+.bottAggiungi {
   width: 20%;
+}
+@media only screen and (min-width: 950px) {
+  .tab {
+    table {
+      min-width: 500px;
+      margin-left: 10px;
+    }
+  }
+}
+@media only screen and (max-width: 950px) {
+  .mat-elevation-z8 {
+    width: 500px;
+    margin-left: 0px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .tab {
+    .mat-elevation-z8 {
+      min-width: unset;
+      width: 350px;
+      margin-left: 0px;
+      .mat-cell,
+      .mat-stroked-button {
+        font-size: x-small;
+      }
+      th.mat-header-cell {
+        text-align: center;
+        font-size: x-small;
+        font-weight: 500;
+        padding: 0;
+      }
+    }
+    .example-element-diagram {
+      display: flex;
+      flex-direction: row;
+      height: auto;
+      width: 100%;
+      margin: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 490px) {
+  .tab {
+    .mat-elevation-z8 {
+      width: 250px;
+    }
+  }
 }

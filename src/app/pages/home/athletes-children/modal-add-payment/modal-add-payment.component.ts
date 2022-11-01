@@ -57,7 +57,7 @@ export class ModalAddPaymentComponent implements OnInit {
     },
     (err) => {
       console.log(err.error);
-      this.error = err.error;
+      this.error = err.error.message;
     }
   );
   }
@@ -67,11 +67,12 @@ this.abstractService.updatePayment(id,this.form.value).subscribe(
   (resp) => {
     console.log(resp);
     this.error = undefined;
+    this.authService.reloadRoute()
     this.closeDialog();
     },
     (err) => {
       console.log(err.error);
-      this.error = err.error;
+      this.error = err.error.message;
     }
   );
   }

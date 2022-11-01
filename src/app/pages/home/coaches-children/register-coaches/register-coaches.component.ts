@@ -66,6 +66,7 @@ export class RegisterCoachesComponent implements OnInit {
         this.error = undefined;
         this.openSnackBar("Coach Saved")
         this.closeDialog()
+        this.authService.reloadRoute()
       },
       (err) => {
         console.log(err.error);
@@ -80,6 +81,7 @@ export class RegisterCoachesComponent implements OnInit {
         this.error = undefined;
         this.closeDialog();
         this.openSnackBar("Coach Updated")
+        this.authService.reloadRoute()
       }, (err)=> {
         console.log(err.error);
         this.error = err.error;

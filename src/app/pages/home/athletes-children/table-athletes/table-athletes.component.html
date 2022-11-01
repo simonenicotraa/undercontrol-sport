@@ -45,41 +45,49 @@
            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
         <div class="example-element-diagram">
           <div>
-            <p> Name: {{element.name}} </p>
-            <p> Surname: {{element.surname}} </p>
-            <p> DateOfBirth: {{element.dateOfBirth}}</p>
+            <p> Name: <strong>{{element.name}}</strong> </p>
+            <p> Surname: <strong>{{element.surname}}</strong> </p>
+            <p> DateOfBirth: <strong>{{element.dateOfBirth}}</strong></p>
             <p> Email:  <a href="mailto:{{element.email}}">{{element.email}}</a>  </p>
             <p> Telephone Number: <a href="tel:{{element.ntel}}"></a>{{element.ntel}} </p>
-            <p> Fiscal Code: {{element.fiscalCode}} </p>
-            <p> Address: {{element.address}}, {{element.cap}}</p>
-            <p *ngIf="element.listCertificates[0]!=undefined">
-              Medical Certificate:
+            <p> Fiscal Code: <strong style="text-transform: uppercase;">{{element.fiscalCode}}</strong> </p>
+            <p> Address: <strong> {{element.address}}, {{element.cap}}</strong></p>
+        <mat-divider *ngIf="element.listCertificates[0]!=undefined"></mat-divider>
+        <div *ngIf="element.listCertificates[0]!=undefined">
+          <p>
+            <strong style="text-transform: uppercase;"><mat-icon> local_hospital</mat-icon> <br>
+              Medical Certificate:</strong>
+          </p>
+          <p>
               <span class="valid" *ngIf="element.listCertificates[element.listCertificates.length-1].validation==true">
-                  VALID
-              </span>
-              <span class="invalid" *ngIf="element.listCertificates[element.listCertificates.length-1].validation==false">
-                  INVALID
-              </span><br>
-              expirationDate:{{element.listCertificates[element.listCertificates.length-1].expirationDate}}
-
+                VALID
+            </span>
+            <span class="invalid" *ngIf="element.listCertificates[element.listCertificates.length-1].validation==false">
+                INVALID
+            </span>
             </p>
+           <p>expirationDate:{{element.listCertificates[element.listCertificates.length-1].expirationDate}}</p>
+        </div>
 
+        <mat-divider *ngIf="element.listPayments[0]!=undefined"></mat-divider>
             <p *ngIf="element.listPayments[0]!=undefined">
-                Payment:
+              <strong style="text-transform: uppercase;">	<mat-icon> monetization_on</mat-icon>
+                <br> Last Payment:</strong>
                    <span class="valid" *ngIf="element.listPayments[element.listPayments.length-1].paymentStatus==true">
                   PAYED
                   </span>
                   <span class="invalid" *ngIf="element.listPayments[element.listPayments.length-1].paymentStatus==false">
                    NOT PAYED
-                  </span><br>
-                 AMOUNT --> {{element.listPayments[element.listPayments.length-1].amount}}  <br>
-                 PAYED --> {{element.listPayments[element.listPayments.length-1].payed}}<br>
+                  </span>
+                </p>
+                  <p *ngIf="element.listPayments[0]!=undefined">AMOUNT --> {{element.listPayments[element.listPayments.length-1].amount}}</p>
+                  <p *ngIf="element.listPayments[0]!=undefined">PAYED --> {{element.listPayments[element.listPayments.length-1].payed}}</p>
 
-                 <mat-progress-bar mode="determinate"
+                 <mat-progress-bar mode="determinate" *ngIf="element.listPayments[0]!=undefined"
                  value="{{element.listPayments[element.listPayments.length-1].payed*100/element.listPayments[element.listPayments.length-1].amount}}">
                 </mat-progress-bar>
 
-            </p>
+
 
           </div>
           <div class="bottoni">
@@ -196,8 +204,10 @@
             <p> Telephone Number: <a href="tel:{{element.ntel}}"></a>{{element.ntel}} </p>
             <p> FiscalCode: <strong><span style="text-transform: uppercase;">{{element.fiscalCode}}</span></strong> </p>
             <p> Address: <strong>{{element.address}}, {{element.cap}}</strong></p>
+        <mat-divider *ngIf="element.listCertificates[0]!=undefined"></mat-divider>
             <p *ngIf="element.listCertificates[0]!=undefined">
-              Medical Certificate:
+             <strong style="text-transform: uppercase;"><mat-icon> local_hospital</mat-icon> <br>
+               Medical Certificate:</strong>
               <span class="valid" *ngIf="element.listCertificates[element.listCertificates.length-1].validation==true">
                   VALID
               </span>
@@ -207,19 +217,24 @@
               expirationDate:{{element.listCertificates[element.listCertificates.length-1].expirationDate}}
 
             </p>
+        <mat-divider *ngIf="element.listPayments[0]!=undefined"></mat-divider>
+            <div class="payment">
+              <div *ngIf="element.listPayments[0]!=undefined">
+                <p>
+                  <strong style="text-transform: uppercase;">	<mat-icon> monetization_on</mat-icon>
+                    <br> Last Payment:</strong>
+                <span class="valid" *ngIf="element.listPayments[element.listPayments.length-1].paymentStatus==true">
+                 PAYED
+               </span>
+               <span class="invalid" *ngIf="element.listPayments[element.listPayments.length-1].paymentStatus==false">
+                  NOT PAYED
+               </span>
+                </p>
 
-            <p *ngIf="element.listPayments[0]!=undefined">
-                Payment:
-                   <span class="valid" *ngIf="element.listPayments[element.listPayments.length-1].paymentStatus==true">
-                  PAYED
-                  </span>
-                  <span class="invalid" *ngIf="element.listPayments[element.listPayments.length-1].paymentStatus==false">
-                   NOT PAYED
-                  </span><br>
-                 AMOUNT --> {{element.listPayments[element.listPayments.length-1].amount}}  <br>
-                 PAYED --> {{element.listPayments[element.listPayments.length-1].payed}}<br>
-
-                <br>
+                <p>AMOUNT --> {{element.listPayments[element.listPayments.length-1].amount}}</p>
+                <p>PAYED --> {{element.listPayments[element.listPayments.length-1].payed}}</p>
+              </div>
+              <div *ngIf="element.listPayments[0]!=undefined">
                 <span class="spinner-container">
                   <div class="spinner-background">{{element.listPayments[element.listPayments.length-1].payed*100/element.listPayments[element.listPayments.length-1].amount}}%</div>
                   <mat-progress-spinner #spinner
@@ -228,8 +243,8 @@
                       value="{{element.listPayments[element.listPayments.length-1].payed*100/element.listPayments[element.listPayments.length-1].amount}}">
                   </mat-progress-spinner>
                 </span>
-
-            </p>
+              </div>
+           </div>
 
           </div>
           <div class="bottoni">

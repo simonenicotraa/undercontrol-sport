@@ -27,14 +27,11 @@ import { RegisterAthletesComponent } from '../register-athletes/register-athlete
   templateUrl: './table-athletes.component.html',
   styleUrls: ['./table-athletes.component.scss'],
   animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0' })),
-      state('expanded', style({ height: '*' })),
-      transition(
-        'expanded <=> collapsed',
-        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
-      ),
-    ]),
+    trigger('detailExpand', [ state('collapsed, void', style({ height: '0px' })),
+    state('expanded', style({ height: '*' })),
+    transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    transition('expanded <=> void', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)'))
+   ]),
   ],
 })
 export class TableAthletesComponent implements OnInit {
@@ -244,6 +241,7 @@ export class TableAthletesComponent implements OnInit {
     let u = obj[0];
     console.log(u.listPayments);
     let dialogRef = this.dialog.open(ModalViewAllPaymentComponent, {
+      panelClass: 'my-class',
       data: {
         id: id,
         list: u.listPayments,

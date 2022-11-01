@@ -7,6 +7,27 @@ div, .pag{
     margin: 0 auto;
   }
 }
+
+.payment{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  div{
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 930px){
+  .payment{
+    width: 100%;
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+    align-items: initial;
+
+
+  }
+}
   @media only screen and (max-width: 601px) {
     div, .pag{
       width: 100%;
@@ -111,7 +132,7 @@ tr.example-element-row:not(.example-expanded-row):active {
   line-height: 80px;
   text-align: center;
   overflow: hidden;
-  border-color: rgba(103, 58, 183, 0.12);
+  border-color: rgba(128, 99, 178, 0.401);
   border-radius: 50%;
   border-style: solid;
   border-width: 10px;

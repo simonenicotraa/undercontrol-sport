@@ -1,5 +1,5 @@
 <form *ngIf="bool==false" class="example-form" (ngSubmit)="insertPayment(data.id)" #f="ngForm">
-
+<h2>Add Payment</h2>
   <mat-form-field class="example-full-width" appearance="outline">
     <mat-label>Season</mat-label>
     <input matInput  ngModel name="season" placeholder="Ex. 22/23" >
@@ -16,13 +16,16 @@
     <mat-label>Society</mat-label>
     <input matInput  [(ngModel)]="society" readonly="readonly" name="society" placeholder="Ex. 12345">
   </mat-form-field>
-  <button type="submit">Add payment</button>
 
+  <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
+
+  <mat-dialog-actions align="end">
+  <button mat-stroked-button type="submit">Add payment</button>
+  </mat-dialog-actions>
 </form>
 
-
 <form *ngIf="bool==true"  class="example-form" (ngSubmit)="updatePayment(data.idPayement)" #f="ngForm">
-
+<h2>Update Payment</h2>
   <mat-form-field class="example-full-width" appearance="outline">
     <mat-label>Season</mat-label>
     <input matInput  [(ngModel)]="data.season" name="season" placeholder="Ex. 22/23" >
@@ -37,15 +40,23 @@
 
   <mat-form-field appearance="fill" floatLabel="always">
     <mat-label>Payed</mat-label>
-    <input matInput [(ngModel)]="data.payed" type="number" name="payed" class="example-right-align" placeholder="0">
+    <input matInput [(ngModel)]="data.payed" type="number" name="payed" class="example-right-align" placeholder="0"
+    matTooltip="In this field you see how much he has paid. Enter the amount currently paid. The system will take care of adding"
+    matTooltipPosition="right">
     <span matPrefix>€&nbsp;</span>
     <span matSuffix>.00</span>
+
   </mat-form-field>
 
   <mat-form-field class="example-full-width" class="team" appearance="outline">
     <mat-label>Society</mat-label>
     <input matInput  [(ngModel)]="society" readonly="readonly" name="society" placeholder="Ex. 12345">
   </mat-form-field>
+<h4 style="display: flex; align-items: center"><mat-icon>info</mat-icon> Info</h4>
+<p>In Payed field you see how much athlete has paid. Enter the amount currently paid. The system will take care of adding</p>
+  <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
 
-  <button type="submit">Add payment</button>
+  <mat-dialog-actions align="end">
+  <button mat-stroked-button type="submit">Add payment</button>
+  </mat-dialog-actions>
 </form>

@@ -1,12 +1,22 @@
 <div  mat-dialog-content>
-
+<h2>List of all Payments</h2>
 <mat-list>
-  <div *ngFor="let item of data.list">
-    <mat-list-item>
-      <div>SEASON:{{item.season}}   || AMOUNT:{{item.amount}} -- PAYED: {{item.payed}}</div>
-      <div><button (click)="deletePayement(item.id)"><mat-icon>delete</mat-icon></button></div>
-    </mat-list-item>
-  <mat-divider></mat-divider>
+  <div class="box" *ngFor="let item of data.list">
+
+      <div>
+        <div>
+          <p style="margin-left: 5px;margin-top: 5px; font-weight:500; font-size: x-large;">SEASON:{{item.season}}  </p>
+          <p> Amount:{{item.amount}}</p>
+          <p> Payed: {{item.payed}}</p>
+        </div>
+      <div class="bottoni">
+        <button mat-raised-button color="warn" (click)="deletePayement(item.id)"><mat-icon>delete</mat-icon>Delete</button>
+        <button mat-raised-button (click)="openDialogPaymentUpdate(item.id)" ><mat-icon>edit</mat-icon>Update</button>
+      </div>
+      </div>
+
+
+<mat-divider></mat-divider>
   </div>
 
 </mat-list>

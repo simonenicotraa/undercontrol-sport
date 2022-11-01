@@ -2,7 +2,7 @@
   <h2 mat-dialog-title>Save new Athletes</h2>
   <form class="example-form"  #f="ngForm"  (ngSubmit)="save()" >
   <mat-dialog-content class="mat-typography">
-
+    <div class="form">
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Name</mat-label>
         <input matInput  type="text" required ngModel  name="name"  placeholder="Ex. Mario" >
@@ -25,7 +25,9 @@
         <mat-label>Email</mat-label>
         <input matInput type="email"  ngModel required name="email" placeholder="Ex. m.r@example.com" >
       </mat-form-field>
+    </div>
 
+    <div class="form">
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Telephone Number</mat-label>
         <input matInput type="tel" ngModel required name="ntel" placeholder="333-4444555">
@@ -52,9 +54,10 @@
         <mat-label>Society</mat-label>
         <input matInput [(ngModel)]="society" readonly="readonly" name="society" placeholder="Ex. 12345">
       </mat-form-field>
+    </div>
 
-    <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
   </mat-dialog-content>
+  <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancel</button>
     <button mat-button type="submit" cdkFocusInitial><mat-icon>person_add</mat-icon> Save Athlete</button>
@@ -68,7 +71,7 @@
 <h2 mat-dialog-title>Update Athlete</h2>
 <form class="example-form"  #f="ngForm"  (ngSubmit)="update(data.id)" >
 <mat-dialog-content class="mat-typography">
-
+  <div class="form">
   <mat-form-field class="example-full-width" appearance="outline">
     <mat-label>Name</mat-label>
     <input matInput type="text" required [(ngModel)]="data.name" name="name" placeholder="Ex. Mario" >
@@ -91,7 +94,9 @@
     <mat-label>Email</mat-label>
     <input matInput type="email" required [(ngModel)]="data.email" name="email" placeholder="Ex. m.r@example.com" >
   </mat-form-field>
+</div>
 
+  <div class="form">
   <mat-form-field class="example-full-width" appearance="outline">
     <mat-label>Telephone Number</mat-label>
     <input matInput type="tel" [(ngModel)]="data.ntel" required name="ntel" placeholder="333-4444555">
@@ -119,9 +124,11 @@
     <input matInput  [(ngModel)]="society" readonly="readonly" name="society" placeholder="Ex. 12345">
   </mat-form-field>
 
-    <p>id: {{data.id}}</p>
-    <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
+
+</div>
+
 </mat-dialog-content>
+<mat-error *ngIf="error!=undefined">{{error}}</mat-error>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
   <button mat-button type="submit" cdkFocusInitial><mat-icon>edit</mat-icon> Modifica</button>

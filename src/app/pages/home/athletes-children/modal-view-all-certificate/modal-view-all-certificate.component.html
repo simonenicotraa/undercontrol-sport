@@ -1,17 +1,18 @@
-<div  mat-dialog-content>
-
+<div mat-dialog-content>
+<h2>List of All Medical Certificates</h2>
   <mat-list>
-    <div *ngFor="let item of data.list">
-      <mat-list-item>
-        <div>
+    <div class="bigbox" *ngFor="let item of data.list">
+
+        <div class="box">
         <p>PRODUCTION -> {{item.productionDate}} </p>
         <p>EXPIRATION -> {{item.expirationDate}}</p>
 
         </div>
-        <div>
-          <button matTooltip="Delete Certificate" matTooltipPosition="below" (click)="deleteCertificate(item.id)"><mat-icon>delete</mat-icon></button>
+        <div class="bottoni">
+          <button mat-raised-button color="warn" matTooltip="Delete Certificate" matTooltipPosition="below" (click)="deleteCertificate(item.id)"><mat-icon>delete</mat-icon>Delete</button>
+          <button mat-raised-button (click)="openDialogCertificateUpdate(item.id)" ><mat-icon>edit</mat-icon>Update</button>
         </div>
-      </mat-list-item>
+
     <mat-divider></mat-divider>
     </div>
 

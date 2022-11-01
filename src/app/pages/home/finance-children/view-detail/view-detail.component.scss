@@ -1,84 +1,86 @@
-.detail{
-  :first-child{
-    .edit{
+.detail {
+  :first-child {
+    .edit {
       float: right;
     }
   }
 }
 
-.valid{
-  padding:0.1rem;
+.valid {
+  padding: 0.1rem;
   border-radius: 5px;
   border: 2px solid green;
   font-size: smaller;
-  background-color: rgba(130, 255, 130, 0.585)
+  background-color: rgba(130, 255, 130, 0.585);
 }
 
-.invalid{
-  padding:0.1rem;
-  margin:auto;
+.invalid {
+  padding: 0.1rem;
+  margin: auto;
   font-size: smaller;
   border-radius: 5px;
   border: 2px solid red;
   background-color: rgba(249, 132, 132, 0.531);
 }
 
-@media only screen and (min-width: 950px){
-  .detail{
-  display: flex;
-  flex-direction: row;
+@media only screen and (min-width: 950px) {
+  .detail {
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    .tab{
-        table {
-      min-width: 500px;
-      margin-left: 10px;
+    .tab {
+      table {
+        min-width: 500px;
+        margin-left: 10px;
+      }
     }
-    }
-
+  }
 }
-}
-@media only screen and (max-width: 950px){
-  .detail{
+@media only screen and (max-width: 950px) {
+  .detail {
     display: flex;
     flex-direction: column;
-      align-items: center;
-      .mat-elevation-z8 {
-        width: 500px;
-        margin-left: 0px;
-      }
+    align-items: center;
+    .mat-elevation-z8 {
+      width: 500px;
+      margin-left: 0px;
+    }
   }
 }
-@media only screen and (max-width: 640px){
-  .detail{
+@media only screen and (max-width: 640px) {
+  .detail {
     display: flex;
     flex-direction: column;
-      align-items: center;
-      .mat-elevation-z8 {
-        min-width: unset;
-        width: 350px;
-        margin-left: 0px;
-        .mat-cell, .mat-stroked-button {
-          font-size: x-small;
-        }
-        th.mat-header-cell {
-             text-align: center;
-            font-size: x-small;
-            font-weight: 500;
-            padding: 0;
+    align-items: center;
+    .mat-elevation-z8 {
+      min-width: unset;
+      width: 350px;
+      margin-left: 0px;
+      .mat-cell,
+      .mat-stroked-button {
+        font-size: x-small;
       }
-  }
-  tr.mat-row, tr.mat-footer-row{
-    text-align: center;
-  }
+      th.mat-header-cell {
+        text-align: center;
+        font-size: x-small;
+        font-weight: 500;
+        padding: 0;
+      }
+    }
+    tr.mat-row,
+    tr.mat-footer-row {
+      text-align: center;
+    }
   }
 }
-@media only screen and (max-width: 450px){
-  .detail{
-      .mat-elevation-z8 {
-        width: 250px;
-}
+@media only screen and (max-width: 450px) {
+  .detail {
+    .mat-elevation-z8 {
+      width: 250px;
+    }
   }
-  tr.mat-row, tr.mat-footer-row{
+  tr.mat-row,
+  tr.mat-footer-row {
     text-align: center;
   }
 }

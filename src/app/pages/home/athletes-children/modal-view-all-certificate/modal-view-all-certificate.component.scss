@@ -1,8 +1,38 @@
 :host ::ng-deep .mat-list-item-content{
   justify-content: space-between;
 }
-::ng-deep {
+/* ::ng-deep { */
   .mat-dialog-container{
     padding: 12px;
-  width: 550px;
-}}
+    }
+  .box{
+      p{
+        margin-bottom: 0;
+      }
+}
+.bottoni{
+  text-align: center;
+}
+
+.bigbox{
+  width: 700px;
+}
+@media only screen and (max-width: 910px){
+  .bigbox{
+    width: 500px;
+  }
+}
+
+@media only screen and (max-width: 675px){
+  .bigbox{
+    width: 300px;
+  }
+}
+@media only screen and (max-width: 410px){
+  .bigbox{
+    width: 250px;
+      .bottoni{
+        text-align: left;
+      }
+ }
+}

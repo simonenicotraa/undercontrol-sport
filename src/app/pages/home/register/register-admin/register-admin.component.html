@@ -1,9 +1,9 @@
 
 <div *ngIf="bool==false">
-  <h2 mat-dialog-title>Save new User</h2>
+  <h2 mat-dialog-title>Save new Admin</h2>
   <form class="example-form"  #f="ngForm"  (ngSubmit)="save()" >
   <mat-dialog-content class="mat-typography">
-
+    <div class="form">
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Name</mat-label>
         <input matInput type="text" ngModel required name="name" placeholder="Ex. Mario" >
@@ -18,7 +18,8 @@
         <mat-label>Email</mat-label>
         <input matInput type="email"  ngModel required name="email" placeholder="Ex. m.r@example.com" ><!-- formControlName="email -->
       </mat-form-field>
-
+</div>
+<div class="form">
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Username</mat-label>
         <input matInput type="text" ngModel required name="username" placeholder="Ex. MarRossi">
@@ -33,9 +34,10 @@
         <mat-label>Society</mat-label>
         <input matInput ngModel name="society" placeholder="Ex. GiginoTeam">
       </mat-form-field>
+</div>
 
-      <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
   </mat-dialog-content>
+  <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
   <mat-dialog-actions align="end">
 
     <button mat-button mat-dialog-close>Cancel</button>
@@ -47,10 +49,10 @@
 
 
 <div *ngIf="bool == true">
-<h2 mat-dialog-title>Update User</h2>
+<h2 mat-dialog-title>Update Admin # {{data.id}}</h2>
 <form class="example-form"  #f="ngForm"  (ngSubmit)="update(data.id)" >
 <mat-dialog-content class="mat-typography">
-
+  <div class="form">
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Name</mat-label>
       <input matInput required [(ngModel)]="data.name" name="name" placeholder="Ex. Mario" >
@@ -66,21 +68,12 @@
       <input matInput type="email" required [(ngModel)]="data.email" name="email" placeholder="Ex. m.r@example.com" ><!-- formControlName="email -->
     </mat-form-field>
 
-<!--     <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>Username</mat-label>
-      <input matInput  [(ngModel)]="data.username" name="username" placeholder="Ex. MarRossi">
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>Password</mat-label>
-      <input type="password" matInput ngModel name="password" placeholder="Ex. abc123Sushi">
-    </mat-form-field> -->
-
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Society</mat-label>
       <input matInput [(ngModel)]="data.society" readonly="readonly" name="society" placeholder="Ex. 12345">
     </mat-form-field>
     <p>id: {{data.id}}</p>
+  </div>
     <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
 </mat-dialog-content>
 <mat-dialog-actions align="end">

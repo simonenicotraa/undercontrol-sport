@@ -7,7 +7,12 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-  <button type="submit">Add Certificate</button>
+
+  <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
+
+  <mat-dialog-actions align="end">
+  <button mat-stroked-button type="submit">Add Certificate</button>
+  </mat-dialog-actions>
 </form>
 
 <form *ngIf="bool==true" class="example-form" (ngSubmit)="updateCertificate(data.id)" #f="ngForm">
@@ -20,5 +25,10 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-  <button type="submit">Update Certificate</button>
+
+  <mat-error *ngIf="error!=undefined">{{error}}</mat-error>
+
+  <mat-dialog-actions align="end">
+  <button mat-stroked-button type="submit">Update Certificate</button>
+  </mat-dialog-actions>
 </form>
