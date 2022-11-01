@@ -49,13 +49,13 @@
            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
         <div class="example-element-diagram">
           <div>
-            <p> Name: {{element.name}} </p>
-            <p> Surname: {{element.surname}} </p>
-            <p> DateOfBirth: {{element.dateOfBirth}}</p>
-            <p> Email:  <a href="mailto:{{element.email}}">{{element.email}}</a>  </p>
-            <p> Telephone Number: <a href="tel:+{{element.ntel}}"></a>{{element.ntel}} </p>
-            <p> Fiscal Code: {{element.fiscalCode}} </p>
-            <p> Address: {{element.address}} {{element.cap}}</p>
+            <p> Name: <strong>{{element.name}}</strong> </p>
+            <p> Surname: <strong>{{element.surname}}</strong> </p>
+            <p> DateOfBirth: <strong>{{element.dateOfBirth}}</strong></p>
+            <p> Email:  <a href="mailto:{{element.email}}"><strong>{{element.email}}</strong></a>  </p>
+            <p> Telephone Number: <a href="tel:+{{element.ntel}}"><strong>{{element.ntel}}</strong></a> </p>
+            <p> Fiscal Code: <strong>{{element.fiscalCode}}</strong> </p>
+            <p> Address: <strong>{{element.address}} {{element.cap}}</strong></p>
 
           </div>
           <div  class="bottoni">

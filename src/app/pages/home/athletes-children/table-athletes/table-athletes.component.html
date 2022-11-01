@@ -49,7 +49,7 @@
             <p> Surname: <strong>{{element.surname}}</strong> </p>
             <p> DateOfBirth: <strong>{{element.dateOfBirth}}</strong></p>
             <p> Email:  <a href="mailto:{{element.email}}">{{element.email}}</a>  </p>
-            <p> Telephone Number: <a href="tel:{{element.ntel}}"></a>{{element.ntel}} </p>
+            <p> Telephone Number: <a href="tel:{{element.ntel}}">{{element.ntel}}</a> </p>
             <p> Fiscal Code: <strong style="text-transform: uppercase;">{{element.fiscalCode}}</strong> </p>
             <p> Address: <strong> {{element.address}}, {{element.cap}}</strong></p>
         <mat-divider *ngIf="element.listCertificates[0]!=undefined"></mat-divider>
@@ -90,7 +90,8 @@
 
 
           </div>
-          <div class="bottoni">
+          <div class="botto">
+            <div>
             <button  matTooltip="Delete Athlete" matTooltipPosition="below" mat-flat-button color="warn"  (click)="deleteAthlete(element.id)"><mat-icon>delete</mat-icon></button><br>
             <button matTooltip="Update Athlete" matTooltipPosition="below" mat-flat-button color="accent" (click)="openDialog(element.id)" ><mat-icon>edit</mat-icon></button><br>
 <!-- MINI-MENU CERTIFICATI -->
@@ -108,6 +109,8 @@
               <button  mat-stroked-button (click)="openDialogPaymentUpdate(element.listPayments[element.listPayments.length-1].idP)" >Update Last Payment</button><br>
               <button  mat-stroked-button (click)="openDialogViewAllPayement(element.id)" >View all Payments</button>
             </mat-menu>
+            </div>
+
 
           </div>
 
@@ -200,8 +203,8 @@
             <p> Name: <strong>{{element.name}}</strong> </p>
             <p> Surname: <strong>{{element.surname}}</strong> </p>
             <p> DateOfBirth: <strong>{{element.dateOfBirth}}</strong></p>
-            <p> Email:  <a href="mailto:{{element.email}}">{{element.email}}</a>  </p>
-            <p> Telephone Number: <a href="tel:{{element.ntel}}"></a>{{element.ntel}} </p>
+            <p> Email:  <a href="mailto:{{element.email}}"><strong>{{element.email}}</strong></a>  </p>
+            <p> Telephone Number: <a href="tel:{{element.ntel}}"><strong>{{element.ntel}}</strong></a> </p>
             <p> FiscalCode: <strong><span style="text-transform: uppercase;">{{element.fiscalCode}}</span></strong> </p>
             <p> Address: <strong>{{element.address}}, {{element.cap}}</strong></p>
         <mat-divider *ngIf="element.listCertificates[0]!=undefined"></mat-divider>
@@ -248,10 +251,11 @@
 
           </div>
           <div class="bottoni">
-            <button  matTooltip="Delete Athlete" matTooltipPosition="below" mat-flat-button color="warn"  (click)="deleteAthlete(element.id)"><mat-icon>delete</mat-icon></button><br>
-            <button matTooltip="Update Athlete" matTooltipPosition="below" mat-flat-button color="accent" (click)="openDialog(element.id)" ><mat-icon>edit</mat-icon></button><br>
+            <div>
+            <button mat-flat-button matTooltip="Delete Athlete" matTooltipPosition="below" color="warn"  (click)="deleteAthlete(element.id)"><mat-icon>delete</mat-icon></button><br>
+            <button mat-flat-button matTooltip="Update Athlete" matTooltipPosition="below" color="accent" (click)="openDialog(element.id)" ><mat-icon>edit</mat-icon></button><br>
 <!-- MINI-MENU CERTIFICATI -->
-            <button mat-raised-button [matMenuTriggerFor]="menu1">MedicalCertificate</button><br>
+            <button mat-stroked-button [matMenuTriggerFor]="menu1">MedicalCertificate</button><br>
             <mat-menu #menu1="matMenu">
             <button mat-stroked-button (click)="openDialogCertificate(element.id)" >Add Certificate</button><br>
             <button *ngIf="element.listCertificates.length!=0" mat-stroked-button  (click)="openDialogCertificateUpdate(element.listCertificates[0].id)" >Update Last Certificate</button><br>
@@ -259,12 +263,14 @@
 
           </mat-menu>
 <!-- MINI-MENU PAGAMENTI -->
-            <button mat-raised-button [matMenuTriggerFor]="menu">Payment</button><br>
+            <button mat-stroked-button [matMenuTriggerFor]="menu">Payment</button><br>
             <mat-menu #menu="matMenu">
               <button  mat-stroked-button (click)="openDialogPayment(element.id)" >Add Payment</button><br>
               <button *ngIf="element.listPayments.length!=0"  mat-stroked-button (click)="openDialogPaymentUpdate(element.listPayments[0].id)" >Update Last Payment</button><br>
               <button *ngIf="element.listPayments.length!=0" mat-stroked-button (click)="openDialogViewAllPayement(element.id)" >View all Payments</button>
             </mat-menu>
+            </div>
+
 
           </div>
 

@@ -116,11 +116,26 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .bottoni{
   text-align: center;
-  button{
+  div{
+  width: 200px;
+    button{
+      width: 100%;
     margin-top: 0.5rem;
   }
-}
+  }
 
+}
+.botto{
+  text-align: right;
+  div{
+    width: 100px;
+    button{
+      width: 100%;
+    margin-top: 0.5rem;
+    font-size: xx-small;
+  }
+  }
+}
 
 .spinner-container {
   position: relative;

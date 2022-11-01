@@ -5,10 +5,10 @@
       Admin
     </mat-panel-title>
     <mat-panel-description>
-      <button mat-button (click)="openDialogAdmin()"><mat-icon>person_add</mat-icon>Registra un nuovo Admin</button>      <mat-icon>new</mat-icon>
+      <button mat-button (click)="openDialogAdmin()"><mat-icon>person_add</mat-icon>Register new Admin</button>      <mat-icon>new</mat-icon>
     </mat-panel-description>
   </mat-expansion-panel-header>
-  aaaaa {{user.roles[0].id}}
+  Register a new Admin
 </mat-expansion-panel>
 
  <!-- pannello per aggiunta di user -->
@@ -17,9 +17,10 @@
       User
     </mat-panel-title>
     <mat-panel-description>
-      <button mat-button (click)="openDialogUser()"><mat-icon>person_add</mat-icon> Registra un nuovo User</button>
+      <button mat-button (click)="openDialogUser()"><mat-icon>person_add</mat-icon> Register new User</button>
     </mat-panel-description>
   </mat-expansion-panel-header>
+  Register a new user who can help you manage your company
 </mat-expansion-panel>
 
 <app-table-users></app-table-users>

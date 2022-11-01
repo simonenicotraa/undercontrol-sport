@@ -24,6 +24,27 @@ div{
       margin:0;
     }
   }
+  @media only screen and (max-width: 640px) {
+    div {
+      .mat-elevation-z8 {
+        margin-left: 0px;
+        .mat-cell,
+        .mat-stroked-button {
+          font-size: x-small;
+        }
+        th.mat-header-cell {
+          text-align: center;
+          font-size: x-small;
+          font-weight: 500;
+
+        }
+      }
+      tr.mat-row,
+      tr.mat-footer-row {
+        text-align: center;
+      }
+    }
+  }
 .valid{
   padding:0.1rem;
   border-radius: 5px;
