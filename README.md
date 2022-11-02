@@ -11,7 +11,7 @@ Potrai monitorare la tua società su qualsiasi dispositivo: PC, Tablet o telefon
   <li>Sass</li>
 </ul>
 
-Back-End di questo progetto -> <a href:"https://github.com/simonenicotraa/undercontrol-BE.git">https://github.com/simonenicotraa/undercontrol-BE.git</a>
+Back-End di questo progetto ->https://github.com/simonenicotraa/undercontrol-BE.git
 <ul> 
   <strong>Tecnologie usate Back-End </strong>
   <li>Java</li>
