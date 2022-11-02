@@ -4,7 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Questa web-app nasce dall'esigenza di mettere ordine nelle scrivanie degli uffici delle società sportive. Potrai gestire i dati di atleti e allenatori, potrai comporre le squadre e organizzarle come desideri.
 Potrai monitorare la tua società su qualsiasi dispositivo: PC, Tablet o telefono.
-<ul> Tecnologie usate
+<ul> 
+  <strong>Tecnologie usate </strong>
   <li>Angular</li>
   <li>Angular Material</li>
   <li>Sass</li>
