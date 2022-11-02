@@ -2,10 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.3.
 
+Questa web-app nasce dall'esigenza di mettere ordine nelle scrivanie degli uffici delle società sportive. Potrai gestire i dati di atleti e allenatori, potrai comporre le squadre e organizzarle come desideri.
+Potrai monitorare la tua società su qualsiasi dispositivo: PC, Tablet o telefono.
+<ul> Tecnologie usate
+  <li>Angular</li>
+  <li>Angular Material</li>
+  <li>Sass</li>
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-command: <strong>ng s -o</strong>
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.</br>
+Command: <strong>ng s -o</strong>
 
 ## Code scaffolding
 
