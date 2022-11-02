@@ -3,21 +3,18 @@
 Progetto generato con [Angular CLI](https://github.com/angular/angular-cli) version 14.0.3.
 
 Questa web-app nasce dall'esigenza di mettere ordine nelle scrivanie degli uffici delle società sportive. Potrai gestire i dati di atleti e allenatori, potrai comporre le squadre e organizzarle come desideri.
-Potrai monitorare la tua società su qualsiasi dispositivo: PC, Tablet o telefono.
-<ul> 
-  <strong>Tecnologie usate Front-End </strong>
-  <li>Angular</li>
-  <li>Angular Material</li>
-  <li>Sass</li>
-</ul>
+Potrai monitorare la tua società su qualsiasi dispositivo: PC, Tablet o telefono.</br>
+<strong>Tecnologie usate Front-end:</strong></br>
+<img src="https://user-images.githubusercontent.com/104636288/199508866-bc43861e-183c-443c-baa3-d6cc3fdc08f7.png" width="40px" height="40px" alt="Angular-Logo">
+<img src="https://user-images.githubusercontent.com/104636288/199511606-94aec76a-e015-4695-9c70-6f9b8fece6c5.png" width="40px" height="40px" alt="AngularMaterial-Logo">
+<img src="https://user-images.githubusercontent.com/104636288/199512075-150cc2a6-2fdc-4d81-a5de-08f83ef0385e.png" width="40px" height="40px" alt="Sass-Logo">
 
-Back-End di questo progetto ->https://github.com/simonenicotraa/undercontrol-BE.git
-<ul> 
-  <strong>Tecnologie usate Back-End </strong>
-  <li>Java</li>
-  <li>Spring</li>
-  <li>PostgreSQL</li>
-</ul>
+Back-End di questo progetto ->https://github.com/simonenicotraa/undercontrol-BE.git</br>
+  <strong>Tecnologie usate Back-End </strong></br>
+<img src="https://user-images.githubusercontent.com/104636288/199513032-517673ed-ea69-44a9-8614-77bae516808b.png" width="40px" height="40px" alt="Java-logo">
+<img src="https://user-images.githubusercontent.com/104636288/199512940-7db0ff07-c727-48b3-b2d9-acb992357cda.png" width="40px" height="40px" alt="Spring-Logo">
+<img src="https://user-images.githubusercontent.com/104636288/199512976-7b769c16-944f-4d8b-8cd4-89d10bbc402d.png" width="40px" height="40px" alt="Postgresql-logo">
+
 
 ## Development server
 
