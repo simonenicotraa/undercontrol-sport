@@ -5,10 +5,18 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Questa web-app nasce dall'esigenza di mettere ordine nelle scrivanie degli uffici delle società sportive. Potrai gestire i dati di atleti e allenatori, potrai comporre le squadre e organizzarle come desideri.
 Potrai monitorare la tua società su qualsiasi dispositivo: PC, Tablet o telefono.
 <ul> 
-  <strong>Tecnologie usate </strong>
+  <strong>Tecnologie usate Front-End </strong>
   <li>Angular</li>
   <li>Angular Material</li>
   <li>Sass</li>
+</ul>
+
+Back-End di questo progetto -> <a href:"https://github.com/simonenicotraa/undercontrol-BE.git">https://github.com/simonenicotraa/undercontrol-BE.git</a>
+<ul> 
+  <strong>Tecnologie usate Back-End </strong>
+  <li>Java</li>
+  <li>Spring</li>
+  <li>PostgreSQL</li>
 </ul>
 
 ## Development server
