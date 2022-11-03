@@ -13,7 +13,7 @@ import { AbstractServiceService } from '../../abstract-service.service';
 export class ModalUpdateCredentialComponent implements OnInit {
   @ViewChild('f') form!: NgForm;
   error=undefined
-  isDisabled = true
+  isDisabled = false
 
   constructor(private abstractService: AbstractServiceService,
               private authService: AuthService,

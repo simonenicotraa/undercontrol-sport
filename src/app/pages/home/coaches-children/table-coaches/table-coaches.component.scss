@@ -23,6 +23,23 @@ div{
       margin:0;
     }
   }
+  @media only screen and (max-width: 640px) {
+    div {
+      .mat-elevation-z8 {
+        margin-left: 0px;
+        .mat-cell,
+        .mat-stroked-button {
+          font-size: x-small;
+        }
+        th.mat-header-cell {
+
+          font-size: x-small;
+          font-weight: 500;
+
+        }
+      }
+    }
+  }
 
 tr.example-detail-row {
   height: 0;

@@ -13,7 +13,7 @@
         <input matInput type="text" required ngModel name="surname" placeholder="Ex. Rossi">
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
+      <mat-form-field style="margin-bottom:6px ;" appearance="fill">
         <mat-label>Choose a date</mat-label>
         <input matInput name="dateOfBirth" ngModel required [matDatepicker]="picker">
         <mat-hint>MM/DD/YYYY</mat-hint>
@@ -81,7 +81,7 @@
         <input matInput type="text" [(ngModel)]="data.surname" required name="surname" placeholder="Ex. Rossi">
       </mat-form-field>
 
-      <mat-form-field appearance="fill" >
+      <mat-form-field style="margin-bottom:6px ;" appearance="fill" >
         <mat-label>Choose a date</mat-label>
         <input matInput name="dateOfBirth"  [(ngModel)]="data.dateOfBirth" required [matDatepicker]="picker">
         <mat-hint>MM/DD/YYYY</mat-hint>

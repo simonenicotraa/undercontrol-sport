@@ -27,7 +27,7 @@
 <!-- Name Column -->
 <ng-container matColumnDef="fiscalCode">
   <th mat-header-cell *matHeaderCellDef> FiscalCode </th>
-  <td mat-cell *matCellDef="let element"> {{element.fiscalCode}} </td>
+  <td mat-cell *matCellDef="let element" style="text-transform:uppercase;"> {{element.fiscalCode}} </td>
 </ng-container>
 
 
@@ -54,7 +54,7 @@
             <p> DateOfBirth: <strong>{{element.dateOfBirth}}</strong></p>
             <p> Email:  <a href="mailto:{{element.email}}"><strong>{{element.email}}</strong></a>  </p>
             <p> Telephone Number: <a href="tel:+{{element.ntel}}"><strong>{{element.ntel}}</strong></a> </p>
-            <p> Fiscal Code: <strong>{{element.fiscalCode}}</strong> </p>
+            <p> Fiscal Code: <strong style="text-transform:uppercase;">{{element.fiscalCode}}</strong> </p>
             <p> Address: <strong>{{element.address}} {{element.cap}}</strong></p>
 
           </div>

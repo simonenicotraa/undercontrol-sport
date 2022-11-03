@@ -32,9 +32,7 @@ export class HomeComponent implements OnInit {
       : this.themeService.update('dark-mode');
   }
   logout() {
-    alert('Arrivederci');
     this.authService.logout();
-    this.router.navigate(['start'])
     this.authService.reloadRoute();
   }
 }
