@@ -22,9 +22,7 @@ export class LoginPage implements OnInit {
  /* con this.form.value prendo i valori dei form e li passo al backend */
     this.authService.login(this.form.value).subscribe(
       resp => {
-        console.log(resp);
         this.error = undefined;
-
         //dopo il login passo alla pagina protetta dal guard HOME
         this.router.navigate(['home'])
 

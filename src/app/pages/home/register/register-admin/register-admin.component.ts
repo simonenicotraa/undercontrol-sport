@@ -45,10 +45,10 @@ export class RegisterAdminComponent implements OnInit {
     this.dialogRef.close();
   }
   save() {
-    console.log(this.form.value)
+/*     console.log(this.form.value) */
         this.abstractService.signupAdmin(this.form.value).subscribe(
       (resp) => {
-        console.log(resp);
+        /* console.log(resp); */
         this.error = undefined;
         this.closeDialog()
        this.authService.reloadRoute()
@@ -63,7 +63,7 @@ export class RegisterAdminComponent implements OnInit {
   update(id: number){
     this.abstractService.updateUserInfo(id, this.form.value).subscribe(
       (resp) => {
-        console.log(resp);
+        /* console.log(resp); */
         this.error = undefined;
         this.closeDialog();
         this.authService.reloadRoute()
