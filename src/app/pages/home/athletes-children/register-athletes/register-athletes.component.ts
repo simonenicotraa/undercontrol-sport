@@ -65,7 +65,7 @@ export class RegisterAthletesComponent implements OnInit {
       },
       (err) => {
         console.log(err.error);
-        this.error = err.error.message;
+        this.error = err.text;
       }
     );
   }
@@ -78,7 +78,7 @@ export class RegisterAthletesComponent implements OnInit {
         this.authService.reloadRoute()
       }, (err)=> {
         console.log(err.error);
-        this.error = err.error.message;
+        this.error = err.text;
       }
     )
   }
