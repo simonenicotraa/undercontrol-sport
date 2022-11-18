@@ -12,6 +12,7 @@ export class LoginPage implements OnInit {
   @ViewChild('f') form!: NgForm;
   error = undefined;
 
+  showSpinner=false;
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -19,15 +20,18 @@ export class LoginPage implements OnInit {
 
   onSubmit() {
  //   console.log(this.form.value);
+ this.showSpinner=true
  /* con this.form.value prendo i valori dei form e li passo al backend */
     this.authService.login(this.form.value).subscribe(
       resp => {
         this.error = undefined;
+        this.showSpinner=false
         //dopo il login passo alla pagina protetta dal guard HOME
         this.router.navigate(['home'])
 
       },
       err  => {
+        this.showSpinner=false
         console.log(err.error);
         this.error = err.error;
       }

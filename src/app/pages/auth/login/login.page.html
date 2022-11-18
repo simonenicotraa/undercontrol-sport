@@ -37,5 +37,8 @@
 
 
     <button type="submit" class="accedi" mat-stroked-button>Sign in</button>
+    <div style="display: flex; justify-content: center;">
+      <mat-spinner *ngIf="showSpinner==true"></mat-spinner>
+    </div>
   </form>
 </div>
