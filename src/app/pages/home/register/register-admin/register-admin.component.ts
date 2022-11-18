@@ -55,7 +55,7 @@ export class RegisterAdminComponent implements OnInit {
       },
       (err) => {
         console.log(err.error);
-        this.error = err.error.message;
+        this.error = err.error.text;
       }
     );
   }
@@ -69,7 +69,7 @@ export class RegisterAdminComponent implements OnInit {
         this.authService.reloadRoute()
       }, (err)=> {
         console.log(err.error);
-        this.error = err.error.message;
+        this.error = err.error.text;
       }
     )
   }

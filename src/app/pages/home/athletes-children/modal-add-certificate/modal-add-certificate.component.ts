@@ -52,7 +52,7 @@ this.abstractService.insertMedicalCertificates(this.form.value,id).subscribe(
   },
   (err) => {
     console.log(err.error);
-    this.error = err.error.message;
+    this.error = err.error.text;
   }
 );
 }
@@ -68,7 +68,7 @@ return this.abstractService.updateMedicalCertificate(id,this.form.value).subscri
   },
   (err) => {
     console.log(err.error);
-    this.error = err.error.message;
+    this.error = err.error.text;
   }
 );
 }

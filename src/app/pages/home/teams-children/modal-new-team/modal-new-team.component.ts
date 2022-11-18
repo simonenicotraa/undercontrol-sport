@@ -67,7 +67,7 @@ export class ModalNewTeamComponent implements OnInit {
         this.closedialog()
       }, (err)=>{
         console.log(err.error);
-        this.error = err.error.message;
+        this.error = err.error.text;
       })
     }
     updateTeam(id:number){
@@ -79,7 +79,7 @@ export class ModalNewTeamComponent implements OnInit {
           this.authService.reloadRoute()
         }, (err)=> {
 
-          this.error = err.error.message;
+          this.error = err.error.text;
         }
       )
     }

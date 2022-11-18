@@ -8,9 +8,11 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { PreLoaderComponent } from 'src/app/components/pre-loader/pre-loader.component';
 @NgModule({
   declarations: [
-    LoginPage
+    LoginPage,
+    PreLoaderComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +23,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatInputModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+
   ]
 })
 export class AuthModule { }
